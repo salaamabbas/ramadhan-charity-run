@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     
     <!-- Title for Google and browser tab -->
     <title>Ramadhan Charity Run 2026 | Charity, Fitness & Fun</title>
@@ -8,7 +8,7 @@
     <!-- SEO Meta Description -->
     <meta name="description" content="Join the Ramadhan Charity Run 2026 in Uganda. A fundraising marathon to support the needy during Ramadan, combining fitness, fun, and charity. Register now to run for a cause!">
 
-    <!-- Optional meta keywords (Google ignores but harmless) -->
+    <!-- Optional meta keywords -->
     <meta name="keywords" content="Ramadhan Charity Run, charity marathon Uganda, fundraising run, Kampala charity event, run for a cause">
 
     <!-- Author of the website -->
@@ -19,159 +19,286 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-
-    <!-- Your internal styles -->
-    <style>
     
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ===== CSS RESET & GLOBAL STYLES ===== */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent;
+        }
 
         :root {
             --primary: #1D4FA2;
-            --secondary: #0D3A7A;
+            --primary-dark: #0D3A7A;
+            --primary-light: #2B5CB8;
             --yellow: #F9CA25;
+            --yellow-dark: #F0B800;
             --light: #E8F0FF;
             --white: #FFFFFF;
+            --black: #1A1A1A;
+            --gray: #666666;
+            --gray-light: #F5F7FA;
+            --success: #25D366;
+            --success-dark: #128C7E;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+            --shadow-sm: 0 4px 12px rgba(29, 79, 162, 0.08);
+            --shadow-md: 0 10px 30px rgba(29, 79, 162, 0.15);
+            --shadow-lg: 0 20px 50px rgba(29, 79, 162, 0.25);
+            --shadow-xl: 0 30px 70px rgba(29, 79, 162, 0.35);
+            --radius-sm: 10px;
+            --radius-md: 20px;
+            --radius-lg: 30px;
+            --radius-xl: 50px;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            overflow-x: hidden;
+            width: 100%;
+            height: 100%;
         }
         
         body {
             font-family: 'Poppins', sans-serif;
-            color: #1A1A1A;
+            color: var(--black);
+            background: var(--white);
             overflow-x: hidden;
+            width: 100%;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            line-height: 1.6;
         }
         
         #mainContent {
             flex: 1 0 auto;
+            width: 100%;
         }
         
+        /* ===== CONTAINER ===== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+        }
+        
+        /* ===== NAVIGATION ===== */
         nav {
-            background: rgba(29, 79, 162, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: sticky;
+            background: rgba(29, 79, 162, 0.98);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 15px 0;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
             box-shadow: 0 4px 20px rgba(29, 79, 162, 0.3);
-            animation: slideDown 0.8s ease-out;
+            animation: slideDown 0.8s ease-out forwards;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from { 
+                transform: translateY(-100%); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateY(0); 
+                opacity: 1; 
+            }
         }
         
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
+            height: 60px;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 12px;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: var(--transition);
+            text-decoration: none;
+            z-index: 1001;
         }
         
         .logo img {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             object-fit: contain;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+            animation: logoSpin 20s linear infinite;
+        }
+        
+        @keyframes logoSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         .logo span {
             font-size: 1.8rem;
-            font-weight: 800;
-            color: white;
+            font-weight: 900;
+            color: var(--white);
             font-family: 'Playfair Display', serif;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
         
-        .logo:hover { transform: scale(1.05); }
+        .logo:hover { 
+            transform: scale(1.05); 
+        }
+        
+        .logo:hover img {
+            animation-play-state: paused;
+        }
         
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2.5rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1.8rem;
+            }
         }
         
         .nav-links a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
             position: relative;
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 8px 0;
+            display: inline-block;
         }
         
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 3px;
             background: var(--yellow);
-            transition: width 0.3s;
+            border-radius: 1.5px;
+            transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
         
-        .nav-links a:hover::after { width: 100%; }
-        .nav-links a:hover { color: var(--yellow); }
+        .nav-links a:hover::after,
+        .nav-links a.active::after { 
+            width: 100%; 
+        }
+        
+        .nav-links a:hover { 
+            color: var(--yellow); 
+            transform: translateY(-2px);
+        }
         
         .menu-toggle {
             display: none;
             background: rgba(249, 202, 37, 0.2);
             border: 2px solid var(--yellow);
-            color: white;
-            font-size: 1.8rem;
+            color: var(--white);
+            font-size: 1.5rem;
             cursor: pointer;
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
-            display: flex;
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-sm);
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            transition: var(--transition);
+            z-index: 1001;
         }
         
         .menu-toggle:hover {
             background: var(--yellow);
             color: var(--primary);
+            transform: rotate(90deg);
         }
         
+        /* ===== HERO SECTION ===== */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, #1D4FA2 0%, #0D3A7A 50%, #2B5CB8 100%);
+            min-height: 100dvh;
+            width: 100%;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary-light) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 6rem 2rem;
-            position: relative;
+            padding: 80px 0 40px;
             overflow: hidden;
         }
         
-        .hero::before {
-            content: '';
+        @media (max-height: 700px) {
+            .hero {
+                min-height: 700px;
+                padding-top: 100px;
+                padding-bottom: 60px;
+            }
+        }
+        
+        .hero-image-slider {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
         }
         
-        @keyframes gridMove {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(50px, 50px) rotate(360deg); }
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transform: scale(1.1);
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+            filter: brightness(0.35) contrast(1.1);
+            will-change: transform, opacity;
         }
         
-        .hero::after {
+        .hero-image.active {
+            opacity: 0.4;
+            transform: scale(1);
+        }
+        
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -179,139 +306,266 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(249, 202, 37, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(29, 79, 162, 0.3) 0%, transparent 50%);
-            animation: pulse 8s ease-in-out infinite;
+                radial-gradient(circle at 20% 50%, rgba(249, 202, 37, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(29, 79, 162, 0.2) 0%, transparent 50%);
+            z-index: 2;
+            animation: pulseBackground 8s ease-in-out infinite alternate;
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
+        @keyframes pulseBackground {
+            0% { 
+                opacity: 0.5; 
+                transform: scale(1); 
+            }
+            100% { 
+                opacity: 0.8; 
+                transform: scale(1.1); 
+            }
         }
         
         .hero-content {
             text-align: center;
-            color: white;
+            color: var(--white);
             max-width: 1100px;
-            z-index: 1;
+            width: 100%;
+            z-index: 3;
+            position: relative;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         .hero-logo {
-            width: 150px;
-            height: 150px;
+            width: clamp(120px, 20vw, 180px);
+            height: clamp(120px, 20vw, 180px);
             margin: 0 auto 2rem;
             animation: float 3s ease-in-out infinite;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            padding: clamp(10px, 2vw, 20px);
+            border: 3px solid rgba(249, 202, 37, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .hero-logo img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-20px) rotate(5deg); 
+            }
         }
         
         .hero-title {
-            font-size: 4.5rem;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-family: 'Poppins', sans-serif;
             font-weight: 900;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 5px 30px rgba(0,0,0,0.5);
-            letter-spacing: 3px;
-            animation: fadeInScale 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+            margin-bottom: 1rem;
+            text-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+            animation: fadeInScale 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s both;
             line-height: 1.1;
+            background: linear-gradient(to right, var(--white), var(--yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            word-break: break-word;
+            hyphens: auto;
         }
         
         @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.8) translateY(30px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: scale(0.9) translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1) translateY(0); 
+            }
+        }
+        
+        .hero-date {
+            font-size: clamp(1rem, 1.5vw, 1.3rem);
+            color: var(--yellow);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: fadeInUp 1.2s ease-out 0.5s both;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-date i {
+            font-size: 1.1em;
         }
         
         .hero-edition {
-            font-size: 1.2rem;
-            color: var(--yellow);
+            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 2rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            animation: fadeInUp 1.2s ease-out 0.4s backwards;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            animation: fadeInUp 1.2s ease-out 0.6s both;
+            text-transform: uppercase;
         }
         
         .hero-slogan {
-            font-size: 1.5rem;
-            margin-bottom: 3.5rem;
+            font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+            margin-bottom: 3rem;
             font-style: italic;
             font-weight: 300;
-            animation: fadeInUp 1.2s ease-out 0.7s backwards;
+            animation: fadeInUp 1.2s ease-out 0.7s both;
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            padding: 0 20px;
+            opacity: 0.95;
+            line-height: 1.5;
         }
         
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        .countdown-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 1.2s ease-out 0.9s both;
         }
         
         .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-            animation: fadeInUp 1.2s ease-out 1s backwards;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: clamp(15px, 2vw, 25px);
+            perspective: 1000px;
+        }
+        
+        @media (max-width: 768px) {
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
         }
         
         .countdown-item {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            min-width: 100px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: var(--radius-lg);
+            padding: clamp(20px, 3vw, 30px) clamp(15px, 2vw, 25px);
+            text-align: center;
             border: 2px solid rgba(249, 202, 37, 0.3);
-            transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+            animation: countdownFloat 3s ease-in-out infinite;
+            box-shadow: 
+                inset 0 0 20px rgba(255, 255, 255, 0.1),
+                0 10px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+        }
+        
+        @keyframes countdownFloat {
+            0%, 100% { 
+                transform: translateY(0) rotateX(0); 
+            }
+            50% { 
+                transform: translateY(-10px) rotateX(5deg); 
+            }
         }
         
         .countdown-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-15px) rotateX(10deg);
             border-color: var(--yellow);
-            box-shadow: 0 12px 35px rgba(249, 202, 37, 0.4);
+            box-shadow: 
+                inset 0 0 30px rgba(255, 255, 255, 0.2),
+                0 20px 60px rgba(249, 202, 37, 0.3);
         }
         
         .countdown-number {
-            font-size: 3rem;
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 800;
             color: var(--yellow);
-            text-shadow: 0 3px 15px rgba(0,0,0,0.4);
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
             line-height: 1;
-        }
-        
-        .countdown-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            margin-top: 0.5rem;
+            margin-bottom: 8px;
+            font-family: 'Poppins', monospace;
             letter-spacing: 1px;
         }
         
+        .countdown-label {
+            font-size: clamp(0.75rem, 1vw, 0.9rem);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: clamp(15px, 2vw, 25px);
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.2s ease-out 1.1s both;
+            width: 100%;
+            max-width: 600px;
+        }
+        
         .cta-button {
-            padding: 1.3rem 3.5rem;
-            background: linear-gradient(135deg, var(--yellow), #F0B800);
-            color: #1A1A1A;
-            border-radius: 50px;
+            padding: clamp(16px, 2vw, 20px) clamp(35px, 4vw, 50px);
+            background: linear-gradient(135deg, var(--yellow), var(--yellow-dark));
+            color: var(--black);
+            border-radius: var(--radius-xl);
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 1.3vw, 1.3rem);
             cursor: pointer;
             border: none;
-            transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-            box-shadow: 0 10px 30px rgba(249, 202, 37, 0.4);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 1.2s ease-out 1.3s backwards;
-            z-index: 1;
+            box-shadow: var(--shadow-lg);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-width: clamp(200px, 25vw, 250px);
+            text-decoration: none;
+            text-align: center;
         }
         
         .cta-button::before {
@@ -321,92 +575,105 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-            transition: left 0.5s;
-            z-index: -1;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s;
         }
         
-        .cta-button:hover::before { left: 100%; }
+        .cta-button:hover::before {
+            left: 100%;
+        }
         
         .cta-button:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(249, 202, 37, 0.6);
+            box-shadow: var(--shadow-xl);
+            background: linear-gradient(135deg, var(--yellow-dark), var(--yellow));
         }
         
         .cta-button:active {
-            transform: translateY(-3px) scale(1.03);
+            transform: translateY(-2px) scale(1.02);
         }
         
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: var(--yellow);
+        }
+        
+        /* ===== GALLERY SHOWCASE ===== */
         .gallery-showcase {
-            padding: 6rem 0;
-            background: linear-gradient(180deg, var(--light) 0%, white 100%);
+            padding: clamp(60px, 8vw, 100px) 0;
+            background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%);
             width: 100%;
+            position: relative;
         }
         
-        .gallery-showcase > * {
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
+        .gallery-showcase .container {
+            position: relative;
+            z-index: 1;
         }
         
         .gallery-showcase h2 {
             text-align: center;
-            font-size: 3rem;
+            font-size: clamp(2rem, 3.5vw, 3.5rem);
             color: var(--primary);
             font-family: 'Playfair Display', serif;
             margin-bottom: 1rem;
             font-weight: 900;
+            line-height: 1.2;
         }
         
         .gallery-showcase-subtitle {
             text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
+            font-size: clamp(1rem, 1.2vw, 1.3rem);
+            color: var(--gray);
+            margin-bottom: 3rem;
             font-style: italic;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            padding: 0 20px;
         }
         
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(20px, 3vw, 30px);
             margin-top: 3rem;
         }
         
         .gallery-item {
             position: relative;
-            border-radius: 20px;
+            border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(29, 79, 162, 0.15);
-            transition: all 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-            animation: fadeInGallery 1s ease-out backwards;
-        }
-        
-        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
-        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
-        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
-        
-        @keyframes fadeInGallery {
-            from { opacity: 0; transform: translateY(30px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            aspect-ratio: 4/3;
+            background: var(--white);
         }
         
         .gallery-item:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 60px rgba(29, 79, 162, 0.25);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-xl);
         }
         
         .gallery-item img {
             width: 100%;
-            height: 350px;
+            height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+            display: block;
         }
         
-        .gallery-item:hover img { transform: scale(1.15); }
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
         
         .gallery-overlay {
             position: absolute;
@@ -419,121 +686,141 @@
             transition: transform 0.4s ease;
         }
         
-        .gallery-item:hover .gallery-overlay { transform: translateY(0); }
-        
-        .gallery-overlay h3 {
-            color: white;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
         }
         
-        .gallery-overlay p { color: var(--yellow); }
+        .gallery-overlay h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .gallery-overlay p {
+            color: var(--yellow);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
         
         .view-full-gallery {
             text-align: center;
             margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(29, 79, 162, 0.1);
         }
         
         .view-gallery-btn {
             padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border-radius: var(--radius-xl);
             font-weight: 600;
             font-size: 1.1rem;
             cursor: pointer;
             border: none;
-            transition: all 0.3s;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 200px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .view-gallery-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        }
+        
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section { 
+            display: none; 
+            width: 100%;
             position: relative;
             overflow: hidden;
         }
         
-        .view-gallery-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-        
-        .view-gallery-btn:hover::before {
-            left: 100%;
-        }
-        
-        .view-gallery-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(29, 79, 162, 0.4);
-        }
-        
-        .view-gallery-btn:active {
-            transform: translateY(-1px) scale(1.02);
-        }
-        
-        section {
-            padding: 6rem 0;
-            width: 100%;
-        }
-        
-        section > * {
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-        
-        .content-section { display: none; }
-        
         .content-section.active {
             display: block;
-            animation: fadeIn 0.5s ease-in;
+            animation: fadeInSection 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInSection {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: clamp(40px, 6vw, 80px);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
         }
         
         .section-title {
-            text-align: center;
-            font-size: 3rem;
-            color: var(--primary);
             font-family: 'Playfair Display', serif;
-            margin-bottom: 1rem;
+            font-size: clamp(2rem, 3.5vw, 3.5rem);
             font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
             position: relative;
-            animation: fadeInUp 0.8s ease-out backwards;
+            display: inline-block;
+            line-height: 1.2;
         }
         
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 80px;
             height: 4px;
             background: linear-gradient(90deg, var(--yellow), var(--primary));
             border-radius: 2px;
+            animation: lineExpand 1s ease-out 0.5s both;
+        }
+        
+        @keyframes lineExpand {
+            from { 
+                width: 0; 
+                opacity: 0; 
+            }
+            to { 
+                width: 80px; 
+                opacity: 1; 
+            }
         }
         
         .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 3rem;
-            margin-top: 2rem;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+            font-size: clamp(1rem, 1.2vw, 1.3rem);
+            color: var(--gray);
+            line-height: 1.8;
+            margin-top: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
+        /* ===== TESTIMONIALS ===== */
         .testimonials-section {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: clamp(60px, 8vw, 100px) 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
         
         .testimonials-section::before {
@@ -547,66 +834,61 @@
             opacity: 0.3;
         }
         
-        .testimonials-section > * {
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
+        .testimonials-section .container {
             position: relative;
             z-index: 1;
-        }
-        
-        .testimonials-section h2 {
-            text-align: center;
-            font-size: 3rem;
-            color: white;
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 1rem;
-            font-weight: 900;
-            animation: fadeInUp 0.8s ease-out backwards;
-        }
-        
-        .testimonials-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--yellow);
-            margin-bottom: 4rem;
-            font-style: italic;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
         }
         
         .testimonials-slider-container {
             position: relative;
             max-width: 900px;
             margin: 0 auto;
+            padding: 0 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .testimonials-slider-container {
+                padding: 0 50px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .testimonials-slider-container {
+                padding: 0 40px;
+            }
         }
         
         .testimonials-slider {
             overflow: hidden;
-            border-radius: 20px;
+            border-radius: var(--radius-lg);
+            background: transparent;
         }
         
         .testimonials-track {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+            will-change: transform;
         }
         
         .testimonial-card {
-            min-width: 100%;
+            flex: 0 0 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            border-radius: var(--radius-lg);
+            padding: clamp(30px, 4vw, 50px);
+            box-shadow: var(--shadow-xl);
             position: relative;
             border: 2px solid rgba(249, 202, 37, 0.2);
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .testimonial-card::before {
             content: '"';
             position: absolute;
-            top: -20px;
+            top: -30px;
             left: 30px;
             font-size: 120px;
             font-family: 'Playfair Display', serif;
@@ -622,15 +904,15 @@
         
         .testimonial-stars {
             color: var(--yellow);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 1.5rem;
             display: flex;
-            gap: 0.3rem;
+            gap: 5px;
         }
         
         .testimonial-text {
-            color: #333;
-            font-size: 1.05rem;
+            color: var(--black);
+            font-size: clamp(1rem, 1.1vw, 1.1rem);
             line-height: 1.8;
             margin-bottom: 2rem;
             font-style: italic;
@@ -651,24 +933,25 @@
             overflow: hidden;
             flex-shrink: 0;
             border: 3px solid var(--yellow);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-md);
         }
         
-        .avatar-img {
+        .author-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
         
         .author-info h4 {
             color: var(--primary);
             font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 0.3rem;
+            margin-bottom: 5px;
         }
         
         .author-info p {
-            color: #666;
+            color: var(--gray);
             font-size: 0.95rem;
         }
         
@@ -676,11 +959,11 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            background: linear-gradient(135deg, var(--yellow), #F0B800);
-            color: #1A1A1A;
+            background: linear-gradient(135deg, var(--yellow), var(--yellow-dark));
+            color: var(--black);
             padding: 0.5rem 1rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
             box-shadow: 0 3px 10px rgba(249, 202, 37, 0.4);
         }
@@ -689,15 +972,15 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.95);
+            background: rgba(255, 255, 255, 0.95);
             border: 2px solid var(--yellow);
             width: 55px;
             height: 55px;
             border-radius: 50%;
-            font-size: 2rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
             z-index: 10;
             display: flex;
             align-items: center;
@@ -708,58 +991,56 @@
         
         .slider-nav:hover {
             background: var(--yellow);
-            color: white;
+            color: var(--white);
             transform: translateY(-50%) scale(1.15);
         }
         
-        .slider-nav.prev { left: -70px; }
-        .slider-nav.next { right: -70px; }
+        .slider-nav.prev { left: 0; }
+        .slider-nav.next { right: 0; }
         
         .slider-dots {
             display: flex;
             justify-content: center;
-            gap: 0.8rem;
-            margin-top: 2rem;
+            gap: 12px;
+            margin-top: 2.5rem;
         }
         
         .dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.4);
+            background: rgba(255, 255, 255, 0.4);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
         
         .dot.active {
             background: var(--yellow);
-            width: 30px;
-            border-radius: 6px;
+            transform: scale(1.2);
         }
         
+        /* ===== KITS SECTION ===== */
         .kit-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
+            gap: clamp(25px, 3vw, 35px);
+            margin-top: 3rem;
         }
         
         .kit-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 40px rgba(29, 79, 162, 0.1);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: clamp(30px, 3vw, 40px) clamp(25px, 2.5vw, 30px);
+            box-shadow: var(--shadow-md);
             border: 2px solid var(--light);
-            transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 0.8s ease-out backwards;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-        
-        .kit-card:nth-child(1) { animation-delay: 0.1s; }
-        .kit-card:nth-child(2) { animation-delay: 0.2s; }
-        .kit-card:nth-child(3) { animation-delay: 0.3s; }
-        .kit-card:nth-child(4) { animation-delay: 0.4s; }
         
         .kit-card::before {
             content: '';
@@ -770,316 +1051,302 @@
             height: 5px;
             background: linear-gradient(90deg, var(--primary), var(--yellow));
             transform: scaleX(0);
-            transition: transform 0.5s;
+            transition: transform 0.6s;
         }
         
-        .kit-card:hover::before { transform: scaleX(1); }
+        .kit-card:hover::before {
+            transform: scaleX(1);
+        }
         
         .kit-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(29, 79, 162, 0.2);
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-xl);
             border-color: var(--yellow);
         }
         
         .kit-card h3 {
+            font-size: clamp(1.5rem, 2vw, 1.8rem);
             color: var(--primary);
-            font-size: 1.8rem;
             margin-bottom: 1rem;
             font-weight: 700;
         }
         
         .kit-price {
-            font-size: 2.5rem;
-            color: var(--yellow);
+            font-size: clamp(2rem, 3vw, 2.8rem);
             font-weight: 800;
+            color: var(--yellow);
             margin: 1.5rem 0;
             font-family: 'Playfair Display', serif;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .kit-description {
-            color: #666;
+            color: var(--gray);
             margin-bottom: 2rem;
-            line-height: 1.8;
+            line-height: 1.7;
+            flex-grow: 1;
         }
         
         .purchase-btn {
             width: 100%;
             padding: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
             border: none;
-            border-radius: 10px;
-            font-weight: 700;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
             cursor: pointer;
             font-size: 1.05rem;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .purchase-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(249, 202, 37, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-            z-index: -1;
-        }
-        
-        .purchase-btn:hover::before {
-            width: 300px;
-            height: 300px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: auto;
         }
         
         .purchase-btn:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(29, 79, 162, 0.3);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
         }
         
-        .purchase-btn:active {
-            transform: translateY(0) scale(0.98);
-        }
-        
+        /* ===== PAYMENT OPTIONS ===== */
         .payment-options {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            max-width: 600px;
-            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: clamp(25px, 3vw, 35px);
+            margin: 3rem auto;
+            max-width: 800px;
         }
         
         .payment-card {
-            background: linear-gradient(135deg, var(--light) 0%, white 100%);
-            padding: 2rem;
-            border-radius: 15px;
+            background: linear-gradient(135deg, var(--light), var(--white));
+            padding: clamp(25px, 3vw, 35px);
+            border-radius: var(--radius-lg);
             border-left: 5px solid var(--primary);
-            box-shadow: 0 5px 20px rgba(29, 79, 162, 0.1);
-            transition: all 0.3s;
-            animation: fadeInLeft 0.8s ease-out backwards;
-        }
-        
-        .payment-card:nth-child(1) { animation-delay: 0.1s; }
-        .payment-card:nth-child(2) { animation-delay: 0.2s; }
-        
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
         }
         
         .payment-card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(29, 79, 162, 0.2);
+            transform: translateY(-10px) translateX(10px);
+            box-shadow: var(--shadow-xl);
             border-left-color: var(--yellow);
         }
         
         .payment-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
             font-weight: 700;
         }
         
         .payment-info {
-            color: #1A1A1A;
+            font-size: 1.1rem;
             line-height: 1.8;
-            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--black);
         }
         
-        .payment-info strong { color: var(--primary); }
+        .payment-info strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
         
         .whatsapp-notice {
             text-align: center;
-            margin-top: 2.5rem;
-            padding: 1.5rem;
+            margin-top: 3rem;
+            padding: 2rem;
             background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
-            border-radius: 15px;
-            border-left: 5px solid #25D366;
-            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+            border-radius: var(--radius-lg);
+            border-left: 5px solid var(--success);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .whatsapp-notice h4 {
+            color: var(--success-dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .whatsapp-notice p {
-            font-size: 1.1rem;
             color: #2E7D32;
-            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
         
-        .whatsapp-notice a {
-            color: #25D366;
+        /* ===== VOLUNTEER SECTION ===== */
+        .volunteer-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+        
+        .volunteer-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: clamp(30px, 4vw, 50px);
+            margin-bottom: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .volunteer-options {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .volunteer-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: clamp(30px, 4vw, 50px);
+            box-shadow: var(--shadow-xl);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .volunteer-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(249, 202, 37, 0.1) 0%, transparent 70%);
+            transition: transform 0.8s;
+            pointer-events: none;
+        }
+        
+        .volunteer-card:hover::before {
+            transform: rotate(180deg);
+        }
+        
+        .volunteer-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(29, 79, 162, 0.4);
+        }
+        
+        .volunteer-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--yellow);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 30px rgba(249, 202, 37, 0.4);
+        }
+        
+        .volunteer-card h3 {
+            font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+            color: var(--yellow);
+            margin-bottom: 1.5rem;
             font-weight: 700;
-            text-decoration: underline;
+            text-align: center;
         }
         
-        .volunteer-section {
-    background: linear-gradient(180deg, white 0%, var(--light) 100%);
-}
-
-.volunteer-intro {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 4rem;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #555;
-    animation: fadeInUp 0.8s ease-out 0.3s backwards;
-}
-
-.volunteer-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 3rem;
-    margin-bottom: 4rem;
-}
-
-.volunteer-card {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    border-radius: 25px;
-    padding: 3rem;
-    box-shadow: 0 15px 50px rgba(29, 79, 162, 0.25);
-    transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-    position: relative;
-    overflow: hidden;
-    animation: fadeInUp 0.8s ease-out backwards;
-}
-
-.volunteer-card:nth-child(1) { animation-delay: 0.1s; }
-.volunteer-card:nth-child(2) { animation-delay: 0.2s; }
-
-.volunteer-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(249, 202, 37, 0.1) 0%, transparent 70%);
-    transition: transform 0.8s;
-
-    /* ✅ FIX ADDED */
-    pointer-events: none;
-}
-
-.volunteer-card:hover::before {
-    transform: rotate(180deg);
-}
-
-.volunteer-card:hover {
-    transform: translateY(-15px) scale(1.02);
-    box-shadow: 0 25px 70px rgba(29, 79, 162, 0.35);
-}
-
-.volunteer-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--yellow);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    margin: 0 auto 2rem;
-    box-shadow: 0 10px 30px rgba(249, 202, 37, 0.4);
-}
-
-.volunteer-card h3 {
-    font-size: 2rem;
-    color: var(--yellow);
-    margin-bottom: 1rem;
-    font-weight: 700;
-    text-align: center;
-}
-
-.volunteer-card p {
-    color: rgba(255,255,255,0.9);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-    font-size: 1.05rem;
-    text-align: center;
-}
-
-.volunteer-benefits {
-    list-style: none;
-    margin-bottom: 2rem;
-}
-
-.volunteer-benefits li {
-    padding: 0.8rem 0;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.volunteer-benefits li::before {
-    content: '✓';
-    color: var(--yellow);
-    font-weight: 900;
-    font-size: 1.3rem;
-}
-
-.apply-btn {
-    width: 100%;
-    padding: 1.2rem;
-    background: var(--yellow);
-    color: var(--primary);
-    border: none;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 5px 20px rgba(249, 202, 37, 0.4);
-
-    /* ✅ EXTRA SAFETY */
-    position: relative;
-    z-index: 10;
-}
-
-.apply-btn:hover {
-    background: white;
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(249, 202, 37, 0.6);
-}
-
-        
-        .partners-section {
-            padding: 6rem 0;
-            background: linear-gradient(180deg, var(--light) 0%, white 100%);
+        .volunteer-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 1.05rem;
         }
         
+        .volunteer-benefits {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+        
+        .volunteer-benefits li {
+            padding: 0.8rem 0;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+        }
+        
+        .volunteer-benefits li::before {
+            content: '✓';
+            color: var(--yellow);
+            font-weight: 900;
+            font-size: 1.3rem;
+        }
+        
+        .apply-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--yellow);
+            color: var(--primary);
+            border: none;
+            border-radius: var(--radius-xl);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(249, 202, 37, 0.4);
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .apply-btn:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* ===== PARTNERS SECTION ===== */
         .partners-intro {
             text-align: center;
             max-width: 700px;
             margin: 0 auto 4rem;
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #555;
-            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+            color: var(--gray);
         }
         
         .partners-marquee {
             overflow: hidden;
-            background: white;
+            background: var(--white);
             padding: 3rem 0;
             margin: 3rem 0;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(29, 79, 162, 0.1);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
             width: 100vw;
-            margin-left: calc(-50vw + 50%);
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
         }
         
         .marquee-track {
             display: flex;
             animation: marquee 40s linear infinite;
             gap: 4rem;
-            width: fit-content;
+            width: max-content;
+            padding: 0 2rem;
         }
         
         @keyframes marquee {
@@ -1093,28 +1360,28 @@
         
         .partner-logo-item {
             flex-shrink: 0;
-            width: 200px;
-            height: 200px;
+            width: clamp(150px, 15vw, 200px);
+            height: clamp(150px, 15vw, 200px);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-md);
             padding: 2rem;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(29, 79, 162, 0.2);
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
         }
         
         .partner-logo-item:hover {
             transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 15px 40px rgba(29, 79, 162, 0.3);
+            box-shadow: var(--shadow-lg);
         }
         
         .partner-logo-item img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            background: white;
+            background: var(--white);
             padding: 1rem;
             border-radius: 15px;
             border: 3px solid var(--yellow);
@@ -1123,21 +1390,19 @@
         .become-partner-container {
             display: flex;
             justify-content: center;
-            padding: 0 20px;
             margin-top: 5rem;
         }
         
         .become-partner-card {
-            background: linear-gradient(135deg, var(--yellow), #f0b800);
-            color: #1a1a1a;
+            background: linear-gradient(135deg, var(--yellow), var(--yellow-dark));
+            color: var(--black);
             max-width: 600px;
             width: 100%;
-            padding: 4rem 3rem;
-            border-radius: 28px;
-            box-shadow: 0 25px 60px rgba(249, 202, 37, 0.35);
+            padding: clamp(40px, 5vw, 60px) clamp(30px, 4vw, 50px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
             text-align: center;
-            transition: all 0.4s;
-            animation: fadeInUp 0.8s ease-out 0.5s backwards;
+            transition: var(--transition);
         }
         
         .become-partner-card:hover {
@@ -1147,60 +1412,64 @@
         
         .become-partner-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 3vw, 2.8rem);
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
         }
         
         .become-partner-card p {
-            font-size: 1.2rem;
+            font-size: clamp(1.1rem, 1.3vw, 1.3rem);
             line-height: 1.7;
             margin-bottom: 2rem;
-            color: #333;
+            color: var(--black);
+            opacity: 0.9;
         }
         
         .partner-btn {
             background: var(--primary);
-            color: white;
+            color: var(--white);
             border: none;
             padding: 1.2rem 3rem;
-            border-radius: 50px;
+            border-radius: var(--radius-xl);
             font-size: 1.2rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.4s;
-            box-shadow: 0 10px 25px rgba(29, 79, 162, 0.4);
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
         }
         
         .partner-btn:hover {
-            background: white;
+            background: var(--white);
             color: var(--primary);
             transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(29, 79, 162, 0.5);
+            box-shadow: var(--shadow-lg);
         }
         
+        /* ===== ABOUT SECTION ===== */
         .about-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            gap: clamp(25px, 3vw, 35px);
             margin-top: 4rem;
         }
         
         .about-card {
-            background: linear-gradient(135deg, var(--light) 0%, white 100%);
-            padding: 3rem;
-            border-radius: 20px;
+            background: linear-gradient(135deg, var(--light), var(--white));
+            padding: clamp(30px, 3vw, 40px);
+            border-radius: var(--radius-lg);
             text-align: center;
-            box-shadow: 0 10px 30px rgba(29, 79, 162, 0.1);
-            transition: all 0.4s;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 0.8s ease-out backwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        
-        .about-card:nth-child(1) { animation-delay: 0.1s; }
-        .about-card:nth-child(2) { animation-delay: 0.2s; }
-        .about-card:nth-child(3) { animation-delay: 0.3s; }
         
         .about-card::before {
             content: '';
@@ -1211,13 +1480,16 @@
             height: 200%;
             background: radial-gradient(circle, rgba(249, 202, 37, 0.1) 0%, transparent 70%);
             transition: transform 0.8s;
+            pointer-events: none;
         }
         
-        .about-card:hover::before { transform: rotate(180deg); }
+        .about-card:hover::before {
+            transform: rotate(180deg);
+        }
         
         .about-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(29, 79, 162, 0.2);
+            box-shadow: var(--shadow-lg);
         }
         
         .about-card h3 {
@@ -1226,52 +1498,51 @@
             margin-bottom: 1.5rem;
             position: relative;
             z-index: 1;
+            font-weight: 700;
         }
         
         .about-card p {
             line-height: 1.8;
-            color: #555;
+            color: var(--gray);
             position: relative;
             z-index: 1;
         }
         
+        /* ===== FULL GALLERY ===== */
         .full-gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
+            gap: clamp(20px, 2.5vw, 30px);
             margin-top: 3rem;
         }
         
         .full-gallery-item {
             position: relative;
-            border-radius: 15px;
+            border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: 0 8px 30px rgba(29, 79, 162, 0.12);
+            box-shadow: var(--shadow-md);
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: fadeInGallery 0.6s ease-out backwards;
+            transition: var(--transition);
+            aspect-ratio: 4/3;
+            background: var(--white);
         }
         
-        .full-gallery-item:nth-child(1) { animation-delay: 0.1s; }
-        .full-gallery-item:nth-child(2) { animation-delay: 0.2s; }
-        .full-gallery-item:nth-child(3) { animation-delay: 0.3s; }
-        .full-gallery-item:nth-child(4) { animation-delay: 0.4s; }
-        .full-gallery-item:nth-child(5) { animation-delay: 0.5s; }
-        .full-gallery-item:nth-child(6) { animation-delay: 0.6s; }
-        
         .full-gallery-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 50px rgba(29, 79, 162, 0.25);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
         }
         
         .full-gallery-item img {
             width: 100%;
-            height: 320px;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
+            display: block;
         }
         
-        .full-gallery-item:hover img { transform: scale(1.1); }
+        .full-gallery-item:hover img {
+            transform: scale(1.1);
+        }
         
         .full-gallery-overlay {
             position: absolute;
@@ -1283,9 +1554,10 @@
         }
         
         .full-gallery-overlay h3 {
-            color: white;
+            color: var(--white);
             font-size: 1.2rem;
             font-weight: 600;
+            margin-bottom: 5px;
         }
         
         .full-gallery-overlay p {
@@ -1293,54 +1565,179 @@
             font-size: 0.9rem;
         }
         
+        /* ===== CONTACT SECTION ===== */
         .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            max-width: 600px;
-            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(20px, 2.5vw, 30px);
+            margin: 3rem auto;
+            max-width: 1200px;
         }
         
         .contact-item {
-            background: linear-gradient(135deg, var(--light) 0%, white 100%);
+            background: linear-gradient(135deg, var(--light), var(--white));
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             gap: 1.5rem;
-            box-shadow: 0 5px 20px rgba(29, 79, 162, 0.1);
-            transition: all 0.3s;
-            animation: fadeInUp 0.8s ease-out backwards;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
         }
         
-        .contact-item:nth-child(1) { animation-delay: 0.1s; }
-        .contact-item:nth-child(2) { animation-delay: 0.2s; }
-        .contact-item:nth-child(3) { animation-delay: 0.3s; }
-        .contact-item:nth-child(4) { animation-delay: 0.4s; }
-        
         .contact-item:hover {
-            transform: translateX(10px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(29, 79, 162, 0.2);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-lg);
         }
         
         .contact-icon {
             font-size: 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             width: 60px;
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(29, 79, 162, 0.3);
+            box-shadow: var(--shadow-sm);
+            color: var(--white);
+            flex-shrink: 0;
         }
         
+        .contact-item div {
+            flex: 1;
+        }
+        
+        .contact-item strong {
+            font-size: 1.2rem;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .contact-item p {
+            color: var(--gray);
+            margin-bottom: 0.3rem;
+            line-height: 1.6;
+        }
+        
+        /* ===== FORMS ===== */
+        .form-container {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: var(--white);
+            padding: clamp(30px, 4vw, 40px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            animation: formAppear 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        
+        @keyframes formAppear {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        .form-container h3 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--light);
+            border-radius: var(--radius-sm);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--gray-light);
+            color: var(--black);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(29, 79, 162, 0.1);
+        }
+        
+        .form-control::placeholder {
+            color: var(--gray);
+            opacity: 0.7;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%231D4FA2' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1.5rem center;
+            background-size: 16px;
+            padding-right: 3rem;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 2rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        }
+        
+        /* ===== WHATSAPP FLOAT ===== */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
+            background: linear-gradient(135deg, var(--success), var(--success-dark));
+            color: var(--white);
             width: 65px;
             height: 65px;
             border-radius: 50%;
@@ -1348,36 +1745,131 @@
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-            z-index: 1000;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
             text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transition: var(--transition);
             animation: bounce 2s infinite;
         }
         
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-10px); }
+            0%, 20%, 50%, 80%, 100% { 
+                transform: translateY(0); 
+            }
+            40% { 
+                transform: translateY(-15px); 
+            }
+            60% { 
+                transform: translateY(-10px); 
+            }
         }
         
         .whatsapp-float:hover {
-            transform: scale(1.15);
-            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+            transform: scale(1.15) rotate(15deg);
             animation: none;
+            box-shadow: 0 20px 60px rgba(37, 211, 102, 0.6);
         }
         
+        /* ===== MODALS ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeInModal 0.3s ease-out;
+        }
+        
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUpModal 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+        
+        @keyframes slideUpModal {
+            from { 
+                opacity: 0; 
+                transform: translateY(50px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--primary);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            z-index: 10;
+        }
+        
+        .close-modal:hover {
+            background: var(--light);
+            transform: rotate(90deg);
+        }
+        
+        /* ===== FOOTER ===== */
         footer {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
             text-align: center;
-            padding: 4rem 2rem 2rem;
+            padding: clamp(40px, 5vw, 60px) 20px 20px;
             flex-shrink: 0;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
         }
         
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         .footer-organizers {
@@ -1390,6 +1882,7 @@
             font-size: 1rem;
             margin: 0.5rem 0;
             font-weight: 300;
+            line-height: 1.6;
         }
         
         .footer-organizers strong {
@@ -1405,610 +1898,1135 @@
             font-weight: 300;
             letter-spacing: 0.5px;
             margin: 0.3rem 0;
+            line-height: 1.6;
+            opacity: 0.9;
         }
         
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal.show {
-            display: flex;
-            animation: fadeInModal 0.3s;
-        }
-        
-        @keyframes fadeInModal {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .modal-content {
-            background: white;
-            padding: 3rem;
-            border-radius: 25px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            animation: slideUpModal 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-        
-        @keyframes slideUpModal {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 2rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: var(--secondary);
-            transition: all 0.3s;
-        }
-        
-        .close-modal:hover {
-            color: var(--primary);
-            transform: rotate(90deg);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--light);
-            border-radius: 10px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(29, 79, 162, 0.1);
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 1.2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(29, 79, 162, 0.4);
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 2rem;
+            }
+            
+            .slider-nav.prev { left: -20px; }
+            .slider-nav.next { right: -20px; }
         }
         
         @media (max-width: 768px) {
-            .menu-toggle { 
+            .menu-toggle {
                 display: flex;
             }
+            
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 0;
                 right: -100%;
-                width: 75%;
+                width: 85%;
                 max-width: 320px;
-                height: calc(100vh - 70px);
+                height: 100vh;
+                height: 100dvh;
                 background: rgba(29, 79, 162, 0.98);
-                backdrop-filter: blur(10px);
+                backdrop-filter: blur(15px);
                 flex-direction: column;
-                padding: 2rem;
+                padding: 100px 30px 30px;
                 gap: 1.5rem;
+                transition: right 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
                 box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
-                transition: right 0.4s ease-in-out;
-                z-index: 999;
+                z-index: 1000;
             }
-            .nav-links.active { right: 0; }
-            .hero-title { font-size: 2.2rem; letter-spacing: 1px; }
-            .hero-logo { width: 100px; height: 100px; margin-bottom: 1.5rem; }
-            .hero-slogan { font-size: 1.1rem; padding: 0 1rem; }
-            .countdown-item { padding: 1rem 1.5rem; min-width: 75px; }
-            .countdown-number { font-size: 1.8rem; }
-            .countdown-label { font-size: 0.75rem; }
-            .gallery-item img, .full-gallery-item img { height: 250px; }
-            .section-title { font-size: 2rem; }
-            .section-subtitle { font-size: 1rem; }
-            .slider-nav { 
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 12px 20px;
+                border-radius: var(--radius-sm);
+                background: rgba(255, 255, 255, 0.05);
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero {
+                padding-top: 100px;
+                padding-bottom: 60px;
+            }
+            
+            .hero-title {
+                letter-spacing: 1px;
+            }
+            
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .slider-nav {
                 width: 45px;
                 height: 45px;
                 font-size: 1.5rem;
             }
+            
             .slider-nav.prev { left: 5px; }
             .slider-nav.next { right: 5px; }
-            .testimonial-card { padding: 2rem 1.5rem; }
-            .testimonial-card::before { font-size: 80px; top: -10px; left: 15px; }
-            .author-avatar { width: 55px; height: 55px; }
-            .testimonial-badge { font-size: 0.7rem; padding: 0.4rem 0.8rem; }
-            .volunteer-options { grid-template-columns: 1fr; gap: 2rem; }
-            .kit-grid { grid-template-columns: 1fr; }
-            .partners-marquee { 
-                width: 100vw;
-                margin-left: calc(-50vw + 50%);
-                border-radius: 0;
+            
+            .testimonial-card {
+                padding: 2rem 1.5rem;
+                min-height: 350px;
             }
-            .marquee-track { 
-                animation-duration: 25s;
-                gap: 2.5rem;
+            
+            .testimonial-card::before {
+                font-size: 80px;
+                top: -15px;
             }
+            
+            .author-avatar {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .volunteer-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .kit-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .partner-logo-item {
                 width: 150px;
                 height: 150px;
             }
-            .become-partner-card {
-                padding: 3rem 2rem;
+            
+            .marquee-track {
+                gap: 2.5rem;
             }
-            .become-partner-card h3 { font-size: 1.8rem; }
-            .cta-button {
-                padding: 1.1rem 2.5rem;
-                font-size: 1.1rem;
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+            
+            .modal-content {
+                margin: 10px;
             }
         }
         
         @media (max-width: 480px) {
-            .hero-title { font-size: 1.8rem; }
-            .hero-edition { font-size: 1rem; }
-            .countdown { gap: 1rem; }
-            .countdown-item { padding: 0.8rem 1rem; min-width: 65px; }
-            .countdown-number { font-size: 1.5rem; }
-            .nav-links { width: 85%; }
-            .testimonial-text { font-size: 0.95rem; }
+            .hero-title {
+                font-size: 2.2rem;
+                line-height: 1.1;
+            }
+            
+            .hero-date {
+                font-size: 1rem;
+            }
+            
+            .hero-slogan {
+                font-size: 1.2rem;
+            }
+            
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .countdown-item {
+                min-width: auto;
+                padding: 1.2rem 1rem;
+            }
+            
+            .countdown-number {
+                font-size: 2rem;
+            }
+            
+            .cta-button {
+                min-width: 100%;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .testimonial-card {
+                padding: 1.5rem;
+                min-height: 400px;
+            }
+            
+            .testimonial-text {
+                font-size: 1rem;
+            }
+            
+            .testimonial-author {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .author-avatar {
+                width: 50px;
+                height: 50px;
+            }
+            
             .slider-nav.prev { left: 2px; }
             .slider-nav.next { right: 2px; }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .volunteer-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .volunteer-card h3 {
+                font-size: 1.8rem;
+            }
+            
+            .partner-logo-item {
+                width: 120px;
+                height: 120px;
+                padding: 1.5rem;
+            }
+            
+            .marquee-track {
+                gap: 2rem;
+            }
+            
+            .full-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+            
+            .form-container h3 {
+                font-size: 1.5rem;
+            }
+            
+            .whatsapp-float {
+                bottom: 15px;
+                right: 15px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
         }
         
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .slider-nav.prev { left: -30px; }
-            .slider-nav.next { right: -30px; }
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-edition {
+                font-size: 0.9rem;
+            }
+            
+            .countdown {
+                grid-template-columns: 1fr;
+                max-width: 200px;
+            }
+            
+            .countdown-item {
+                padding: 1rem;
+            }
+            
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+            
+            .nav-links {
+                padding: 90px 20px 20px;
+            }
+        }
+        
+        /* ===== UTILITY CLASSES ===== */
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mt-3 { margin-top: 3rem; }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mb-3 { margin-bottom: 3rem; }
+        .py-1 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-2 { padding-top: 2rem; padding-bottom: 2rem; }
+        .py-3 { padding-top: 3rem; padding-bottom: 3rem; }
+        
+        /* ===== ANIMATION DELAYS ===== */
+        .animation-delay-1 { animation-delay: 0.1s !important; }
+        .animation-delay-2 { animation-delay: 0.2s !important; }
+        .animation-delay-3 { animation-delay: 0.3s !important; }
+        .animation-delay-4 { animation-delay: 0.4s !important; }
+        .animation-delay-5 { animation-delay: 0.5s !important; }
+        
+        /* ===== FIXES FOR COMMON ISSUES ===== */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        button, a {
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        /* Fix for iOS zoom on input */
+        input, textarea, select {
+            font-size: 16px;
+        }
+        
+        /* Fix for sticky hover on mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .kit-card:hover,
+            .countdown-item:hover,
+            .gallery-item:hover,
+            .contact-item:hover,
+            .payment-card:hover,
+            .volunteer-card:hover,
+            .partner-logo-item:hover,
+            .about-card:hover,
+            .full-gallery-item:hover {
+                transform: none;
+            }
+            
+            .cta-button:hover,
+            .purchase-btn:hover,
+            .apply-btn:hover,
+            .view-gallery-btn:hover,
+            .partner-btn:hover,
+            .submit-btn:hover {
+                transform: none;
+            }
+        }
+        
+        /* Fix for overflow issues */
+        .content-section {
+            overflow: visible;
+        }
+        
+        /* Fix for iOS bounce */
+        body {
+            -webkit-overflow-scrolling: touch;
         }
     </style>
 </head>
 <body>
     <div id="mainContent">
+    <!-- Navigation -->
     <nav>
-        <div class="nav-container">
+        <div class="container nav-container">
             <a class="logo" onclick="showHome()">
                 <img src="run-logo.png" alt="RCR Logo">
                 <span>RCR</span>
             </a>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-links" id="navLinks">
-                <li><a onclick="showHome()">Home</a></li>
-                <li><a onclick="showSection('kits')">Purchase Kit</a></li>
-                <li><a onclick="showSection('donate')">Donate</a></li>
-                <li><a onclick="showSection('about')">About</a></li>
-                <li><a onclick="showSection('volunteer')">Volunteer</a></li>
-                <li><a onclick="showSection('partners')">Partners</a></li>
-                <li><a onclick="showSection('contact')">Contact</a></li>
+                <li><a onclick="showHome()" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a onclick="showSection('kits')"><i class="fas fa-shopping-bag"></i> Purchase Kit</a></li>
+                <li><a onclick="showSection('donate')"><i class="fas fa-donate"></i> Donate</a></li>
+                <li><a onclick="showSection('volunteer')"><i class="fas fa-hands-helping"></i> Volunteer</a></li>
+                <li><a onclick="showSection('partners')"><i class="fas fa-handshake"></i> Partners</a></li>
+                <li><a onclick="showSection('gallery')"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-logo">
-                <img src="run-logo.png" alt="Ramadhan Charity Run Logo">
-            </div>
-            <h1 class="hero-title">RAMADHAN<br>CHARITY RUN</h1>
-            <p class="hero-edition">3RD EDITION • 2026</p>
-            <p class="hero-slogan">Charity, Fitness & Fun — A Happy Ramadhan for All</p>
-            <div class="countdown" id="countdown">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="days">0</div>
-                    <div class="countdown-label">Days</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">0</div>
-                    <div class="countdown-label">Hours</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">0</div>
-                    <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">0</div>
-                    <div class="countdown-label">Seconds</div>
-                </div>
-            </div>
-            <button class="cta-button" onclick="showSection('kits')">PURCHASE KIT</button>
-        </div>
-    </section>
-
-    <section id="kits" class="content-section">
-        <h2 class="section-title">Purchase Your Kit</h2>
-        <p class="section-subtitle">Choose your kit and be part of this amazing journey</p>
-        <div class="kit-grid">
-            <div class="kit-card">
-                <h3>👶 Kids Kit</h3>
-                <div class="kit-price">UGX 19,000</div>
-                <p class="kit-description">Includes: T-shirt, Medal</p>
-                <button class="purchase-btn" onclick="openPaymentModal('Kids Kit - UGX 19,000')">Purchase Now</button>
-            </div>
-            <div class="kit-card">
-                <h3>🥈 Silver Kit</h3>
-                <div class="kit-price">UGX 29,000</div>
-                <p class="kit-description">Includes: Vest, Medal</p>
-                <button class="purchase-btn" onclick="openPaymentModal('Silver Kit - UGX 29,000')">Purchase Now</button>
-            </div>
-            <div class="kit-card">
-                <h3>🥇 Gold Kit</h3>
-                <div class="kit-price">UGX 49,000</div>
-                <p class="kit-description">Includes: Vest, Medal, Bottle, Cap, Bag</p>
-                <button class="purchase-btn" onclick="openPaymentModal('Gold Kit - UGX 49,000')">Purchase Now</button>
-            </div>
-            <div class="kit-card">
-                <h3>💎 Platinum Kit</h3>
-                <div class="kit-price">UGX 89,000</div>
-                <p class="kit-description">Includes: T-shirt, Medal, Bottle, Cap, Bag, Certificate</p>
-                <button class="purchase-btn" onclick="openPaymentModal('Platinum Kit - UGX 89,000')">Purchase Now</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="donate" class="content-section">
-        <h2 class="section-title">Make a Donation</h2>
-        <p class="section-subtitle">Your generosity helps us feed 1,000 families this Ramadhan</p>
-        <div class="payment-options">
-            <div class="payment-card">
-                <h3>📱 MTN Mobile Money</h3>
-                <p class="payment-info">Number: <strong>0762301744</strong></p>
-                <p class="payment-info">Name: <strong>Uthman Matovu</strong></p>
-            </div>
-            <div class="payment-card">
-                <h3>📱 Airtel Money</h3>
-                <p class="payment-info">Number: <strong>0709113129</strong></p>
-                <p class="payment-info">Name: <strong>Uthman Matovu</strong></p>
-            </div>
-        </div>
-        <div class="whatsapp-notice">
-            <p>After payment, share proof via <a href="https://wa.me/256762301744?text=Asalaam%20alykum.%20I%20have%20made%20a%20donation" target="_blank">WhatsApp: 0762301744</a></p>
-        </div>
-    </section>
-
-    <section id="about" class="content-section">
-        <h2 class="section-title">About the Event</h2>
-        <p class="section-subtitle">Charity, Fitness & Fun — A Happy Ramadhan for All</p>
-        <div class="about-content">
-            <div class="about-card">
-                <h3>🎯 Vision</h3>
-                <p>To create a sustainable community initiative that combines fitness, charity, and spiritual fulfillment during the blessed month of Ramadhan.</p>
-            </div>
-            <div class="about-card">
-                <h3>💝 Mission</h3>
-                <p>To bring together communities in support of those in need while promoting health, wellness, and the spirit of giving during Ramadhan.</p>
-            </div>
-            <div class="about-card">
-                <h3>🎯 Impact</h3>
-                <p>Our goal is to feed 1,000 families this Ramadhan. Through your participation and donations, we can make a Happy Ramadhan for All!</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="volunteer" class="content-section volunteer-section">
-        <h2 class="section-title">Join Our Volunteer Team</h2>
-        <p class="section-subtitle">Be part of something meaningful this Ramadhan</p>
-        <div class="volunteer-intro">
-            <p>Join us in making a difference! Whether you want to volunteer at the event or partner with us for the long term, we welcome passionate individuals and organizations committed to community service.</p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-image-slider">
+            <img src="running-for-hope.jpg" alt="Running for Hope" class="hero-image active" id="heroImage1">
+            <img src="joy-and-fitness.jpg" alt="Joy and Fitness" class="hero-image" id="heroImage2">
         </div>
         
-        <div class="volunteer-options">
-            <div class="volunteer-card">
-                <div class="volunteer-icon">🤝</div>
-                <h3>Event Volunteer</h3>
-                <p>Help us make the charity run a success! We need dedicated volunteers for various roles during the event.</p>
-                <ul class="volunteer-benefits">
-                    <li>Official volunteer t-shirt</li>
-                    <li>Certificate of participation</li>
-                    <li>Refreshments & meals</li>
-                    <li>Community service hours</li>
-                    <li>Networking opportunities</li>
-                </ul>
-                <a href="https://wa.me/256762301744?text=Asalaam%20alykum!%20I%20want%20to%20volunteer%20for%20the%20Ramadhan%20Charity%20Run.%20My%20name%20is%3A%20" 
-                   target="_blank" 
-                   class="apply-btn" 
-                   style="display: block; text-align: center; text-decoration: none;">
-                    Apply to Volunteer
-                </a>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="run-logo.png" alt="Ramadhan Charity Run Logo">
+                </div>
+                <h1 class="hero-title">RAMADHAN CHARITY RUN</h1>
+                <p class="hero-date">
+                    <i class="fas fa-calendar-alt"></i>
+                    February 14, 2026 • 6:00 AM
+                </p>
+                <p class="hero-edition">3RD EDITION</p>
+                <p class="hero-slogan">Charity, Fitness & Fun — A Happy Ramadhan for All</p>
+                
+                <div class="countdown-container">
+                    <div class="countdown" id="countdown">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">00</div>
+                            <div class="countdown-label">Days</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">Hours</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">Minutes</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">Seconds</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <button class="cta-button" onclick="showSection('kits')">
+                        <i class="fas fa-running"></i> PURCHASE KIT
+                    </button>
+                    <button class="cta-button secondary" onclick="showSection('volunteer')">
+                        <i class="fas fa-user-plus"></i> BECOME VOLUNTEER
+                    </button>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Gallery Showcase -->
+    <section id="home-gallery" class="gallery-showcase">
+        <div class="container">
+            <h2>Event Highlights</h2>
+            <p class="gallery-showcase-subtitle">Moments from our previous charity runs</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="running-for-hope.jpg" alt="Running">
+                    <div class="gallery-overlay">
+                        <h3>Running for Hope</h3>
+                        <p>Every step counts</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="giving-back.jpg" alt="Giving">
+                    <div class="gallery-overlay">
+                        <h3>Giving Back</h3>
+                        <p>Feeding 1,000 families</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="joy-and-fitness.jpg" alt="Joy">
+                    <div class="gallery-overlay">
+                        <h3>Joy & Fitness</h3>
+                        <p>Healthy bodies, happy hearts</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="volunteers-in-action.jpg" alt="Volunteers">
+                    <div class="gallery-overlay">
+                        <h3>Volunteers in Action</h3>
+                        <p>Making dreams come true</p>
+                    </div>
+                </div>
+            </div>
+            <div class="view-full-gallery">
+                <button class="view-gallery-btn" onclick="showSection('gallery')">
+                    <i class="fas fa-images"></i> View Full Gallery
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 style="color: var(--white); text-align: center; margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3.5rem);">What Our Participants Say</h2>
+            <p style="color: var(--yellow); text-align: center; margin-bottom: 4rem; font-style: italic; font-size: clamp(1rem, 1.2vw, 1.3rem);">Inspiring stories from our charity run family</p>
             
-            <div class="volunteer-card">
-                <div class="volunteer-icon">🤲</div>
-                <h3>Long-term Partnership</h3>
-                <p>Partner with us beyond the event! Join our mission to support communities throughout the year.</p>
-                <ul class="volunteer-benefits">
-                    <li>Brand visibility</li>
-                    <li>CSR opportunities</li>
-                    <li>Tax deduction benefits</li>
-                    <li>Impact reports</li>
-                    <li>Collaborative projects</li>
-                </ul>
-                <a href="https://wa.me/256762301744?text=Asalaam%20alykum!%20I%27m%20interested%20in%20partnering%20with%20Ramadhan%20Charity%20Run.%20Organization%3A%20" 
-                   target="_blank" 
-                   class="apply-btn" 
-                   style="display: block; text-align: center; text-decoration: none;">
-                    Partner With Us
-                </a>
-            </div>
-        </div>
-    </section>
+            <div class="testimonials-slider-container">
+                <button class="slider-nav prev" onclick="prevTestimonial()">&#8249;</button>
+                <div class="testimonials-slider">
+                    <div class="testimonials-track" id="testimonialsTrack">
+                        <div class="testimonial-card">
+                            <span class="testimonial-badge">Runner 2025</span>
+                            <div class="testimonial-content">
+                                <div class="testimonial-stars">
+                                    <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                                </div>
+                                <p class="testimonial-text">
+                                    "This was more than just a run - it was a spiritual journey. Knowing that every step I took helped feed families during Ramadhan made it incredibly meaningful. The organization was flawless and the community spirit was amazing!"
+                                </p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <img src="usaama.jpg" alt="Advocate Usaama" class="avatar-img">
+                                    </div>
+                                    <div class="author-info">
+                                        <h4>Advocate Usaama Ssebuufu</h4>
+                                        <p>Chief Runner</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    <section id="partners" class="content-section partners-section">
-        <h2 class="section-title">Our Amazing Partners</h2>
-        <p class="section-subtitle">Together, we make a greater impact</p>
-        <div class="partners-intro">
-            <p>We are grateful to our partners who share our vision of creating positive change in our community. Together, we achieve more!</p>
-        </div>
-        
-        <div class="partners-marquee">
-            <div class="marquee-track" id="marqueeTrack">
-                <div class="partner-logo-item">
-                    <img src="run-logo.png" alt="Dusman's Daawa">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="amyu-logo.png" alt="AMYU">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="Taniim.png" alt="Taniim Hijja and Umrah">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="run-logo.png" alt="Community Outreach">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="amyu-logo.png" alt="Health Hub">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="run-logo.png" alt="Sports Federation">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="amyu-logo.png" alt="Media Partners">
-                </div>
-                <!-- Duplicate for seamless loop -->
-                <div class="partner-logo-item">
-                    <img src="run-logo.png" alt="Dusman's Daawa">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="amyu-logo.png" alt="AMYU">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="Taniim.png" alt="Taniim Hijja and Umrah">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="run-logo.png" alt="Community Outreach">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="amyu-logo.png" alt="Health Hub">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="run-logo.png" alt="Sports Federation">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="amyu-logo.png" alt="Media Partners">
-                </div>
-            </div>
-        </div>
-        
-        <div class="become-partner-container">
-            <div class="become-partner-card">
-                <h3>Become a Partner</h3>
-                <p>Join us in making a difference in our community.<br>Let's work together for a noble cause!</p>
-                <button class="partner-btn" onclick="openPartnerModal()">Partner With Us Today</button>
-            </div>
-        </div>
-    </section>
+                        <div class="testimonial-card">
+                            <span class="testimonial-badge">Volunteer 2025</span>
+                            <div class="testimonial-content">
+                                <div class="testimonial-stars">
+                                    <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                                </div>
+                                <p class="testimonial-text">
+                                    "Being a volunteer at the Ramadhan Charity Run was one of the most rewarding experiences. Seeing families come together for fitness and charity, and knowing we made a real difference - it's beautiful. Can't wait for the next edition!"
+                                </p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <img src="Herman.jpg" alt="CEO Herman Padel Centre" class="avatar-img">
+                                    </div>
+                                    <div class="author-info">
+                                        <h4>CEO Herman Padel Centre</h4>
+                                        <p>Event Volunteer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    <section id="gallery" class="content-section">
-        <h2 class="section-title">📸 Event Gallery</h2>
-        <p class="section-subtitle">Relive the beautiful moments from our charity runs</p>
-        <div class="full-gallery-grid">
-            <div class="full-gallery-item">
-                <img src="community-together.jpg" alt="Community">
-                <div class="full-gallery-overlay">
-                    <h3>Community Together</h3>
-                    <p>United for a cause</p>
+                        <div class="testimonial-card">
+                            <span class="testimonial-badge">Family Runner</span>
+                            <div class="testimonial-content">
+                                <div class="testimonial-stars">
+                                    <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                                </div>
+                                <p class="testimonial-text">
+                                    "I participated with my entire family, including my kids! The atmosphere was so welcoming and the cause is truly noble. My children learned the value of charity and fitness in the most fun way. Highly recommended!"
+                                </p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <img src="kasim.jpg" alt="Advocate Kasim Muwonge" class="avatar-img">
+                                    </div>
+                                    <div class="author-info">
+                                        <h4>Advocate Kasim Muwonge</h4>
+                                        <p>Family Participant</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="full-gallery-item">
-                <img src="running-for-hope.jpg" alt="Running">
-                <div class="full-gallery-overlay">
-                    <h3>Running for Hope</h3>
-                    <p>Every step counts</p>
-                </div>
-            </div>
-            <div class="full-gallery-item">
-                <img src="giving-back.jpg" alt="Giving">
-                <div class="full-gallery-overlay">
-                    <h3>Giving Back</h3>
-                    <p>Feeding 1,000 families</p>
-                </div>
-            </div>
-            <div class="full-gallery-item">
-                <img src="joy-and-fitness.jpg" alt="Joy">
-                <div class="full-gallery-overlay">
-                    <h3>Joy & Fitness</h3>
-                    <p>Healthy bodies, happy hearts</p>
-                </div>
-            </div>
-            <div class="full-gallery-item">
-                <img src="ramadhan-spirit.jpg" alt="Spirit">
-                <div class="full-gallery-overlay">
-                    <h3>Ramadhan Spirit</h3>
-                    <p>Blessed month, blessed deeds</p>
-                </div>
-            </div>
-            <div class="full-gallery-item">
-                <img src="volunteers-in-action.jpg" alt="Volunteers">
-                <div class="full-gallery-overlay">
-                    <h3>Volunteers in Action</h3>
-                    <p>Making dreams come true</p>
+                <button class="slider-nav next" onclick="nextTestimonial()">&#8250;</button>
+                
+                <div class="slider-dots">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                    <span class="dot" onclick="goToSlide(1)"></span>
+                    <span class="dot" onclick="goToSlide(2)"></span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="content-section">
-        <h2 class="section-title">Contact Us</h2>
-        <p class="section-subtitle">We're here to help. Reach out anytime!</p>
-        <div class="contact-info">
-            <div class="contact-item">
-                <span class="contact-icon">📱</span>
-                <div>
-                    <strong style="font-size: 1.2rem; color: var(--primary);">WhatsApp / Call</strong>
-                    <p>+256 762 301 744</p>
-                    <p>+256 709 113 129</p>
-                </div>
+    <!-- Kits Section -->
+    <section id="kits" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Purchase Your Kit</h2>
+                <p class="section-subtitle">Choose your kit and be part of this amazing journey. Each kit comes with special items to make your run memorable.</p>
             </div>
-            <div class="contact-item">
-                <span class="contact-icon">📧</span>
-                <div>
-                    <strong style="font-size: 1.2rem; color: var(--primary);">Email</strong>
-                    <p>info@ramadhancharityrun.org</p>
+            <div class="kit-grid">
+                <div class="kit-card animation-delay-1">
+                    <h3>👶 Kids Kit</h3>
+                    <div class="kit-price">UGX 19,000</div>
+                    <p class="kit-description">Includes: T-shirt, Medal</p>
+                    <button class="purchase-btn" onclick="openPaymentModal('Kids Kit - UGX 19,000')">
+                        <i class="fas fa-shopping-cart"></i> Purchase Now
+                    </button>
                 </div>
-            </div>
-            <div class="contact-item">
-                <span class="contact-icon">📍</span>
-                <div>
-                    <strong style="font-size: 1.2rem; color: var(--primary);">Event Venue</strong>
-                    <p>Kololo Independence Grounds, Kampala</p>
+                <div class="kit-card animation-delay-2">
+                    <h3>🥈 Silver Kit</h3>
+                    <div class="kit-price">UGX 29,000</div>
+                    <p class="kit-description">Includes: Vest, Medal</p>
+                    <button class="purchase-btn" onclick="openPaymentModal('Silver Kit - UGX 29,000')">
+                        <i class="fas fa-shopping-cart"></i> Purchase Now
+                    </button>
                 </div>
-            </div>
-            <div class="contact-item">
-                <span class="contact-icon">🏢</span>
-                <div>
-                    <strong style="font-size: 1.2rem; color: var(--primary);">Office Location</strong>
-                    <p>Kampala, Uganda</p>
+                <div class="kit-card animation-delay-3">
+                    <h3>🥇 Gold Kit</h3>
+                    <div class="kit-price">UGX 49,000</div>
+                    <p class="kit-description">Includes: Vest, Medal, Bottle, Cap, Bag</p>
+                    <button class="purchase-btn" onclick="openPaymentModal('Gold Kit - UGX 49,000')">
+                        <i class="fas fa-shopping-cart"></i> Purchase Now
+                    </button>
+                </div>
+                <div class="kit-card animation-delay-4">
+                    <h3>💎 Platinum Kit</h3>
+                    <div class="kit-price">UGX 89,000</div>
+                    <p class="kit-description">Includes: T-shirt, Medal, Bottle, Cap, Bag, Certificate</p>
+                    <button class="purchase-btn" onclick="openPaymentModal('Platinum Kit - UGX 89,000')">
+                        <i class="fas fa-shopping-cart"></i> Purchase Now
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <a href="https://wa.me/256762301744?text=Asalaam%20alykum" class="whatsapp-float" target="_blank">💬</a>
-
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closePaymentModal()">&times;</button>
-            <h2 style="color: var(--primary); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 2rem;">Payment Options</h2>
-            <p id="kitInfo" style="margin-bottom: 2rem; font-weight: 600; font-size: 1.1rem; color: var(--yellow);"></p>
+    <!-- Donate Section -->
+    <section id="donate" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Make a Donation</h2>
+                <p class="section-subtitle">Your generosity helps us feed 1,000 families this Ramadhan</p>
+            </div>
             <div class="payment-options">
-                <div class="payment-card">
-                    <h3>📱 MTN Mobile Money</h3>
+                <div class="payment-card animation-delay-1">
+                    <h3><i class="fas fa-mobile-alt"></i> MTN Mobile Money</h3>
                     <p class="payment-info">Number: <strong>0762301744</strong></p>
                     <p class="payment-info">Name: <strong>Uthman Matovu</strong></p>
                 </div>
-                <div class="payment-card">
-                    <h3>📱 Airtel Money</h3>
+                <div class="payment-card animation-delay-2">
+                    <h3><i class="fas fa-sim-card"></i> Airtel Money</h3>
                     <p class="payment-info">Number: <strong>0709113129</strong></p>
                     <p class="payment-info">Name: <strong>Uthman Matovu</strong></p>
                 </div>
             </div>
             <div class="whatsapp-notice">
+                <h4><i class="fab fa-whatsapp"></i> Payment Confirmation</h4>
+                <p>After payment, share proof via <a href="https://wa.me/256762301744?text=Asalaam%20alykum.%20I%20have%20made%20a%20donation" target="_blank">WhatsApp: 0762301744</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About the Event</h2>
+                <p class="section-subtitle">Charity, Fitness & Fun — A Happy Ramadhan for All</p>
+            </div>
+            <div class="about-content">
+                <div class="about-card animation-delay-1">
+                    <h3>🎯 Vision</h3>
+                    <p>To create a sustainable community initiative that combines fitness, charity, and spiritual fulfillment during the blessed month of Ramadhan.</p>
+                </div>
+                <div class="about-card animation-delay-2">
+                    <h3>💝 Mission</h3>
+                    <p>To bring together communities in support of those in need while promoting health, wellness, and the spirit of giving during Ramadhan.</p>
+                </div>
+                <div class="about-card animation-delay-3">
+                    <h3>🎯 Impact</h3>
+                    <p>Our goal is to feed 1,000 families this Ramadhan. Through your participation and donations, we can make a Happy Ramadhan for All!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Section -->
+    <section id="volunteer" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Join Our Volunteer Team</h2>
+                <p class="section-subtitle">Be part of something meaningful this Ramadhan</p>
+            </div>
+            
+            <div class="volunteer-intro">
+                <p>Join us in making a difference! Whether you want to volunteer at the event or partner with us for the long term, we welcome passionate individuals and organizations committed to community service.</p>
+            </div>
+            
+            <div class="volunteer-options">
+                <div class="volunteer-card animation-delay-1">
+                    <div class="volunteer-icon">🤝</div>
+                    <h3>Event Volunteer</h3>
+                    <p>Help us make the charity run a success! We need dedicated volunteers for various roles during the event.</p>
+                    <ul class="volunteer-benefits">
+                        <li>Official volunteer t-shirt</li>
+                        <li>Certificate of participation</li>
+                        <li>Refreshments & meals</li>
+                        <li>Community service hours</li>
+                        <li>Networking opportunities</li>
+                    </ul>
+                    <button class="apply-btn" onclick="openVolunteerForm()">
+                        <i class="fas fa-user-plus"></i> Apply to Volunteer
+                    </button>
+                </div>
+                
+                <div class="volunteer-card animation-delay-2">
+                    <div class="volunteer-icon">🤲</div>
+                    <h3>Long-term Partnership</h3>
+                    <p>Partner with us beyond the event! Join our mission to support communities throughout the year.</p>
+                    <ul class="volunteer-benefits">
+                        <li>Brand visibility</li>
+                        <li>CSR opportunities</li>
+                        <li>Tax deduction benefits</li>
+                        <li>Impact reports</li>
+                        <li>Collaborative projects</li>
+                    </ul>
+                    <button class="apply-btn" onclick="openPartnerForm()">
+                        <i class="fas fa-handshake"></i> Partner With Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Amazing Partners</h2>
+                <p class="section-subtitle">Together, we make a greater impact</p>
+            </div>
+            
+            <div class="partners-intro">
+                <p>We are grateful to our partners who share our vision of creating positive change in our community. Together, we achieve more!</p>
+            </div>
+            
+            <div class="partners-marquee">
+                <div class="marquee-track" id="marqueeTrack">
+                    <div class="partner-logo-item">
+                        <img src="run-logo.png" alt="Dusman's Daawa">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="amyu-logo.png" alt="AMYU">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="Taniim.png" alt="Taniim Hijja and Umrah">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="run-logo.png" alt="Community Outreach">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="amyu-logo.png" alt="Health Hub">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="run-logo.png" alt="Sports Federation">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="amyu-logo.png" alt="Media Partners">
+                    </div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="partner-logo-item">
+                        <img src="run-logo.png" alt="Dusman's Daawa">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="amyu-logo.png" alt="AMYU">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="Taniim.png" alt="Taniim Hijja and Umrah">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="run-logo.png" alt="Community Outreach">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="amyu-logo.png" alt="Health Hub">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="run-logo.png" alt="Sports Federation">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="amyu-logo.png" alt="Media Partners">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="become-partner-container">
+                <div class="become-partner-card">
+                    <h3>Become a Partner</h3>
+                    <p>Join us in making a difference in our community.<br>Let's work together for a noble cause!</p>
+                    <button class="partner-btn" onclick="openPartnerForm()">
+                        <i class="fas fa-handshake"></i> Partner With Us Today
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">📸 Event Gallery</h2>
+                <p class="section-subtitle">Relive the beautiful moments from our charity runs</p>
+            </div>
+            <div class="full-gallery-grid">
+                <div class="full-gallery-item animation-delay-1">
+                    <img src="community-together.jpg" alt="Community">
+                    <div class="full-gallery-overlay">
+                        <h3>Community Together</h3>
+                        <p>United for a cause</p>
+                    </div>
+                </div>
+                <div class="full-gallery-item animation-delay-2">
+                    <img src="running-for-hope.jpg" alt="Running">
+                    <div class="full-gallery-overlay">
+                        <h3>Running for Hope</h3>
+                        <p>Every step counts</p>
+                    </div>
+                </div>
+                <div class="full-gallery-item animation-delay-3">
+                    <img src="giving-back.jpg" alt="Giving">
+                    <div class="full-gallery-overlay">
+                        <h3>Giving Back</h3>
+                        <p>Feeding 1,000 families</p>
+                    </div>
+                </div>
+                <div class="full-gallery-item animation-delay-4">
+                    <img src="joy-and-fitness.jpg" alt="Joy">
+                    <div class="full-gallery-overlay">
+                        <h3>Joy & Fitness</h3>
+                        <p>Healthy bodies, happy hearts</p>
+                    </div>
+                </div>
+                <div class="full-gallery-item animation-delay-5">
+                    <img src="ramadhan-spirit.jpg" alt="Spirit">
+                    <div class="full-gallery-overlay">
+                        <h3>Ramadhan Spirit</h3>
+                        <p>Blessed month, blessed deeds</p>
+                    </div>
+                </div>
+                <div class="full-gallery-item animation-delay-6">
+                    <img src="volunteers-in-action.jpg" alt="Volunteers">
+                    <div class="full-gallery-overlay">
+                        <h3>Volunteers in Action</h3>
+                        <p>Making dreams come true</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">We're here to help. Reach out anytime!</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item animation-delay-1">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <strong>WhatsApp / Call</strong>
+                        <p>+256 762 301 744</p>
+                        <p>+256 709 113 129</p>
+                    </div>
+                </div>
+                <div class="contact-item animation-delay-2">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <strong>Email</strong>
+                        <p>info@ramadhancharityrun.org</p>
+                    </div>
+                </div>
+                <div class="contact-item animation-delay-3">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <strong>Event Venue</strong>
+                        <p>Kololo Independence Grounds, Kampala</p>
+                    </div>
+                </div>
+                <div class="contact-item animation-delay-4">
+                    <div class="contact-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div>
+                        <strong>Office Location</strong>
+                        <p>Kampala, Uganda</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="form-container mt-3">
+                <h3><i class="fas fa-envelope"></i> Send us a Message</h3>
+                <form id="contactForm" onsubmit="submitContactForm(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" class="form-control" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" class="form-control" required placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" class="form-control" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="kit">Kit Purchase</option>
+                            <option value="donation">Donation</option>
+                            <option value="volunteer">Volunteer</option>
+                            <option value="partnership">Partnership</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" class="form-control" required rows="5" placeholder="Type your message here..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/256762301744?text=Asalaam%20alykum%20I%20would%20like%20to%20inquire%20about%20the%20Ramadhan%20Charity%20Run" 
+       class="whatsapp-float" 
+       target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('paymentModal')">&times;</button>
+            <h2 style="color: var(--primary); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 2rem;">Payment Options</h2>
+            <p id="kitInfo" style="margin-bottom: 2rem; font-weight: 600; font-size: 1.1rem; color: var(--yellow); text-align: center;"></p>
+            <div class="payment-options">
+                <div class="payment-card">
+                    <h3><i class="fas fa-mobile-alt"></i> MTN Mobile Money</h3>
+                    <p class="payment-info">Number: <strong>0762301744</strong></p>
+                    <p class="payment-info">Name: <strong>Uthman Matovu</strong></p>
+                </div>
+                <div class="payment-card">
+                    <h3><i class="fas fa-sim-card"></i> Airtel Money</h3>
+                    <p class="payment-info">Number: <strong>0709113129</strong></p>
+                    <p class="payment-info">Name: <strong>Uthman Matovu</strong></p>
+                </div>
+            </div>
+            <div class="whatsapp-notice">
+                <h4><i class="fab fa-whatsapp"></i> Important</h4>
                 <p>After payment, share proof via <a href="https://wa.me/256762301744?text=Asalaam%20alykum.%20I%20have%20purchased%20a%20kit" target="_blank">WhatsApp: 0762301744</a></p>
             </div>
         </div>
     </div>
 
+    <!-- Volunteer Form Modal -->
     <div id="volunteerModal" class="modal">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeVolunteerModal()">&times;</button>
+            <button class="close-modal" onclick="closeModal('volunteerModal')">&times;</button>
             <h2 style="color: var(--primary); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 2rem;">Volunteer Application</h2>
-            <p style="margin-bottom: 2rem; color: #666;">Thank you for your interest! Please share your details via WhatsApp.</p>
-            <div style="text-align: center; padding: 2rem;">
-                <a href="https://wa.me/256762301744?text=Hello!%20I%20want%20to%20volunteer%20for%20the%20Ramadhan%20Charity%20Run.%20My%20name%20is%20" 
-                   target="_blank" 
-                   style="display: inline-block; padding: 1.2rem 2.5rem; background: linear-gradient(135deg, #25D366, #128C7E); color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem;">
-                    📱 Continue on WhatsApp
-                </a>
-            </div>
+            
+            <form id="volunteerForm" onsubmit="submitVolunteerForm(event)" style="margin-top: 2rem;">
+                <div class="form-group">
+                    <label for="volName">Full Name *</label>
+                    <input type="text" id="volName" class="form-control" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="volEmail">Email Address *</label>
+                    <input type="email" id="volEmail" class="form-control" required placeholder="Enter your email address">
+                </div>
+                
+                <div class="form-group">
+                    <label for="volPhone">Phone Number *</label>
+                    <input type="tel" id="volPhone" class="form-control" required placeholder="Enter your phone number">
+                </div>
+                
+                <div class="form-group">
+                    <label for="volAge">Age *</label>
+                    <input type="number" id="volAge" class="form-control" required min="16" placeholder="Enter your age">
+                </div>
+                
+                <div class="form-group">
+                    <label for="volType">Volunteer Type *</label>
+                    <select id="volType" class="form-control" required>
+                        <option value="">Select type</option>
+                        <option value="event">Event Volunteer</option>
+                        <option value="longterm">Long-term Partner</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="volMessage">Why do you want to volunteer? *</label>
+                    <textarea id="volMessage" class="form-control" required rows="4" placeholder="Tell us why you want to volunteer..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Application
+                </button>
+            </form>
         </div>
     </div>
 
+    <!-- Partner Form Modal -->
     <div id="partnerModal" class="modal">
         <div class="modal-content">
-            <button class="close-modal" onclick="closePartnerModal()">&times;</button>
+            <button class="close-modal" onclick="closeModal('partnerModal')">&times;</button>
             <h2 style="color: var(--primary); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 2rem;">Partnership Application</h2>
-            <p style="margin-bottom: 2rem; color: #666;">We're excited to explore partnership opportunities! Contact us via WhatsApp.</p>
-            <div style="text-align: center; padding: 2rem;">
-                <a href="https://wa.me/256762301744?text=Hello!%20I%27m%20interested%20in%20partnering%20with%20Ramadhan%20Charity%20Run.%20Organization:%20" 
-                   target="_blank" 
-                   style="display: inline-block; padding: 1.2rem 2.5rem; background: linear-gradient(135deg, #25D366, #128C7E); color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem;">
-                    📱 Continue on WhatsApp
-                </a>
+            
+            <form id="partnerForm" onsubmit="submitPartnerForm(event)" style="margin-top: 2rem;">
+                <div class="form-group">
+                    <label for="partnerOrg">Organization Name *</label>
+                    <input type="text" id="partnerOrg" class="form-control" required placeholder="Enter organization name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="partnerContact">Contact Person *</label>
+                    <input type="text" id="partnerContact" class="form-control" required placeholder="Enter contact person name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="partnerEmail">Email Address *</label>
+                    <input type="email" id="partnerEmail" class="form-control" required placeholder="Enter organization email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="partnerPhone">Phone Number *</label>
+                    <input type="tel" id="partnerPhone" class="form-control" required placeholder="Enter organization phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="partnerType">Organization Type *</label>
+                    <select id="partnerType" class="form-control" required>
+                        <option value="">Select type</option>
+                        <option value="corporate">Corporate</option>
+                        <option value="ngo">NGO/Non-Profit</option>
+                        <option value="religious">Religious Organization</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="partnerInterest">Partnership Interest *</label>
+                    <textarea id="partnerInterest" class="form-control" required rows="4" placeholder="Describe your proposed partnership..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-handshake"></i> Submit Partnership Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('successModal')">&times;</button>
+            <div style="text-align: center; padding: 3rem 2rem;">
+                <div style="font-size: 5rem; color: var(--yellow); margin-bottom: 1.5rem;">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 1rem; font-family: 'Playfair Display', serif;" id="successTitle">Success!</h2>
+                <p id="successMessage" style="color: var(--gray); font-size: 1.1rem; line-height: 1.6; max-width: 400px; margin: 0 auto;"></p>
+                <button class="cta-button mt-3" onclick="closeModal('successModal')" style="min-width: 200px;">
+                    <i class="fas fa-check"></i> Continue
+                </button>
             </div>
         </div>
     </div>
 
-    <a href="https://wa.me/256762301744?text=Asalaam%20alykum" class="whatsapp-float" target="_blank">💬</a>
-
-   
-
+    <footer>
+        <div class="footer-content">
+            <div class="footer-organizers">
+                <p>Organized by <strong>Dusman's Daawa Initiative</strong></p>
+                <p>In Partnership with <strong>Allied Muslim Youth (AMYU)</strong></p>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; Ramadhan Charity Run. All rights reserved.</p>
+                <p>Charity, Fitness & Fun — A Happy Ramadhan for All 🕌</p>
+            </div>
+        </div>
+    </footer>
+    </div>
+    
     <script>
+        // ===== GLOBAL VARIABLES =====
         let currentSlide = 0;
         const totalSlides = 3;
         let autoSlideInterval;
+        let heroImageIndex = 0;
+        const heroImages = document.querySelectorAll('.hero-image');
+        const eventDate = new Date('February 14, 2026 06:00:00 GMT+0300').getTime();
 
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize hero image slider
+            startHeroImageSlider();
+            
+            // Initialize countdown
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Initialize testimonial slider
+            startAutoSlide();
+            
+            // Set active navigation
+            setActiveNav('home');
+            
+            // Prevent form submission from refreshing page
+            preventFormSubmit();
+            
+            // Handle responsive adjustments
+            handleResponsive();
+        });
+
+        // ===== HERO IMAGE SLIDER =====
+        function startHeroImageSlider() {
+            setInterval(switchHeroImage, 5000);
+        }
+
+        function switchHeroImage() {
+            heroImages[heroImageIndex].classList.remove('active');
+            heroImageIndex = (heroImageIndex + 1) % heroImages.length;
+            heroImages[heroImageIndex].classList.add('active');
+        }
+
+        // ===== COUNTDOWN =====
         function updateCountdown() {
-            const eventDate = new Date('February 8, 2026 00:00:00').getTime();
             const now = new Date().getTime();
             const distance = eventDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
+                        <div style="font-size: clamp(2rem, 3vw, 2.5rem); color: var(--yellow); font-weight: 800;">EVENT IS LIVE!</div>
+                        <div style="color: rgba(255, 255, 255, 0.9); margin-top: 10px; font-size: 1.1rem;">Thank you for participating</div>
+                    </div>
+                `;
+                return;
+            }
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
-
-            if (distance < 0) {
-                document.getElementById('countdown').innerHTML = '<p style="font-size: 2rem; color: var(--yellow);">Event is Live!</p>';
-            }
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
+        // ===== TESTIMONIAL SLIDER =====
         function updateSlider() {
             const track = document.getElementById('testimonialsTrack');
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -2048,222 +3066,298 @@
             startAutoSlide();
         }
 
+        // ===== NAVIGATION =====
         function showHome() {
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show hero and gallery
             document.getElementById('home').style.display = 'flex';
             document.getElementById('home-gallery').style.display = 'block';
             document.querySelector('.testimonials-section').style.display = 'block';
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => section.classList.remove('active'));
+            
+            // Update active nav
+            setActiveNav('home');
+            
+            // Close mobile menu
             closeMenu();
+            
+            // Scroll to top smoothly
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showSection(sectionId) {
+            // Hide hero and gallery
             document.getElementById('home').style.display = 'none';
             document.getElementById('home-gallery').style.display = 'none';
             document.querySelector('.testimonials-section').style.display = 'none';
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => section.classList.remove('active'));
+            
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
             const targetSection = document.getElementById(sectionId);
             if (targetSection) {
                 targetSection.classList.add('active');
             }
+            
+            // Update active nav
+            setActiveNav(sectionId);
+            
+            // Close mobile menu
             closeMenu();
+            
+            // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        function setActiveNav(sectionId) {
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to current section link
+            const activeLink = document.querySelector(`.nav-links a[onclick*="${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            } else if (sectionId === 'home') {
+                document.querySelector('.nav-links a[onclick*="showHome"]').classList.add('active');
+            }
+        }
+
         function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
+            const navLinks = document.getElementById('navLinks');
+            const isActive = navLinks.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (isActive) {
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
+            } else {
+                document.body.style.overflow = 'auto';
+                document.body.style.position = 'static';
+            }
         }
 
         function closeMenu() {
-            document.getElementById('navLinks').classList.remove('active');
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.body.style.position = 'static';
         }
 
+        // ===== MODAL FUNCTIONS =====
         function openPaymentModal(kitInfo) {
             document.getElementById('kitInfo').textContent = kitInfo;
-            document.getElementById('paymentModal').classList.add('show');
+            openModal('paymentModal');
+        }
+
+        function openVolunteerForm() {
+            openModal('volunteerModal');
+        }
+
+        function openPartnerForm() {
+            openModal('partnerModal');
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('show');
             document.body.style.overflow = 'hidden';
         }
 
-        function closePaymentModal() {
-            document.getElementById('paymentModal').classList.remove('show');
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('show');
             document.body.style.overflow = 'auto';
         }
 
-        function openVolunteerModal() {
-            document.getElementById('volunteerModal').classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeVolunteerModal() {
-            document.getElementById('volunteerModal').classList.remove('show');
-            document.body.style.overflow = 'auto';
-        }
-
-        function openPartnerModal() {
-            document.getElementById('partnerModal').classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closePartnerModal() {
-            document.getElementById('partnerModal').classList.remove('show');
-            document.body.style.overflow = 'auto';
-        }
-
+        // Close modal when clicking outside
         window.addEventListener('click', function(event) {
-            const paymentModal = document.getElementById('paymentModal');
-            const volunteerModal = document.getElementById('volunteerModal');
-            const partnerModal = document.getElementById('partnerModal');
-            
-            if (event.target === paymentModal) closePaymentModal();
-            if (event.target === volunteerModal) closeVolunteerModal();
-            if (event.target === partnerModal) closePartnerModal();
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
         });
 
-        window.addEventListener('DOMContentLoaded', function() {
-            showHome();
-            startAutoSlide();
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal.show').forEach(modal => {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                });
+            }
         });
+
+        // ===== FORM SUBMISSIONS =====
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value.trim()
+            };
+
+            // Validate form
+            if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+                showSuccess('Validation Error', 'Please fill in all required fields.');
+                return;
+            }
+
+            if (!isValidEmail(formData.email)) {
+                showSuccess('Invalid Email', 'Please enter a valid email address.');
+                return;
+            }
+
+            // Here you would typically send this data to your server
+            console.log('Contact form submitted:', formData);
+            
+            // Show success message
+            showSuccess('Message Sent!', 'Thank you for contacting us. We will get back to you within 24 hours.');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        function submitVolunteerForm(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('volName').value.trim(),
+                email: document.getElementById('volEmail').value.trim(),
+                phone: document.getElementById('volPhone').value.trim(),
+                age: document.getElementById('volAge').value,
+                type: document.getElementById('volType').value,
+                message: document.getElementById('volMessage').value.trim()
+            };
+
+            // Validate form
+            if (!formData.name || !formData.email || !formData.phone || !formData.age || !formData.type || !formData.message) {
+                showSuccess('Validation Error', 'Please fill in all required fields.');
+                return;
+            }
+
+            if (!isValidEmail(formData.email)) {
+                showSuccess('Invalid Email', 'Please enter a valid email address.');
+                return;
+            }
+
+            if (parseInt(formData.age) < 16) {
+                showSuccess('Age Requirement', 'You must be at least 16 years old to volunteer.');
+                return;
+            }
+
+            // Here you would typically send this data to your server
+            console.log('Volunteer form submitted:', formData);
+            
+            // Show success message
+            showSuccess('Application Submitted!', 'Thank you for your interest in volunteering. We will contact you within 3-5 business days.');
+            
+            // Reset form and close modal
+            event.target.reset();
+            setTimeout(() => {
+                closeModal('volunteerModal');
+            }, 2000);
+        }
+
+        function submitPartnerForm(event) {
+            event.preventDefault();
+            
+            const formData = {
+                organization: document.getElementById('partnerOrg').value.trim(),
+                contact: document.getElementById('partnerContact').value.trim(),
+                email: document.getElementById('partnerEmail').value.trim(),
+                phone: document.getElementById('partnerPhone').value.trim(),
+                type: document.getElementById('partnerType').value,
+                interest: document.getElementById('partnerInterest').value.trim()
+            };
+
+            // Validate form
+            if (!formData.organization || !formData.contact || !formData.email || !formData.phone || !formData.type || !formData.interest) {
+                showSuccess('Validation Error', 'Please fill in all required fields.');
+                return;
+            }
+
+            if (!isValidEmail(formData.email)) {
+                showSuccess('Invalid Email', 'Please enter a valid email address.');
+                return;
+            }
+
+            // Here you would typically send this data to your server
+            console.log('Partner form submitted:', formData);
+            
+            // Show success message
+            showSuccess('Partnership Request Sent!', 'Thank you for your interest in partnering with us. Our team will review your request and get back to you soon.');
+            
+            // Reset form and close modal
+            event.target.reset();
+            setTimeout(() => {
+                closeModal('partnerModal');
+            }, 2000);
+        }
+
+        function showSuccess(title, message) {
+            document.getElementById('successTitle').textContent = title;
+            document.getElementById('successMessage').textContent = message;
+            openModal('successModal');
+        }
+
+        // ===== HELPER FUNCTIONS =====
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function preventFormSubmit() {
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                });
+            });
+        }
+
+        function handleResponsive() {
+            // Check if mobile
+            const isMobile = window.innerWidth <= 768;
+            
+            // Adjust hero height for mobile
+            if (isMobile) {
+                document.querySelector('.hero').style.minHeight = 'calc(100vh - 60px)';
+            }
+            
+            // Handle window resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    if (window.innerWidth > 768) {
+                        closeMenu();
+                    }
+                }, 250);
+            });
+        }
+
+        // Close menu when clicking on a link (for mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    closeMenu();
+                }
+            });
+        });
+
+        // Initialize testimonial slider
+        updateSlider();
     </script>
-    </div>
-    
-       <section id="home-gallery" class="gallery-showcase">
-        <h2>Event Highlights</h2>
-        <p class="gallery-showcase-subtitle">Moments from our previous charity runs</p>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="running-for-hope.jpg" alt="Running">
-                <div class="gallery-overlay">
-                    <h3>Running for Hope</h3>
-                    <p>Every step counts</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="giving-back.jpg" alt="Giving">
-                <div class="gallery-overlay">
-                    <h3>Giving Back</h3>
-                    <p>Feeding 1,000 families</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="joy-and-fitness.jpg" alt="Joy">
-                <div class="gallery-overlay">
-                    <h3>Joy & Fitness</h3>
-                    <p>Healthy bodies, happy hearts</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="volunteers-in-action.jpg" alt="Volunteers">
-                <div class="gallery-overlay">
-                    <h3>Volunteers in Action</h3>
-                    <p>Making dreams come true</p>
-                </div>
-            </div>
-        </div>
-        <div class="view-full-gallery">
-            <button class="view-gallery-btn" onclick="showSection('gallery')">View Full Gallery</button>
-        </div>
-    </section>
-
-    <section class="testimonials-section">
-        <h2>What Our Participants Say</h2>
-        <p class="testimonials-subtitle">Inspiring stories from our charity run family</p>
-        
-        <div class="testimonials-slider-container">
-            <button class="slider-nav prev" onclick="prevTestimonial()">&#8249;</button>
-            <div class="testimonials-slider">
-                <div class="testimonials-track" id="testimonialsTrack">
-                    <div class="testimonial-card">
-                        <span class="testimonial-badge">Runner 2025</span>
-                        <div class="testimonial-content">
-                            <div class="testimonial-stars">
-                                <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
-                            </div>
-                            <p class="testimonial-text">
-                                "This was more than just a run - it was a spiritual journey. Knowing that every step I took helped feed families during Ramadhan made it incredibly meaningful. The organization was flawless and the community spirit was amazing!"
-                            </p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">
-                                    <img src="usaama.jpg" alt="Advocate Usaama" class="avatar-img">
-                                </div>
-                                <div class="author-info">
-                                    <h4>Advocate Usaama Ssebuufu</h4>
-                                    <p>Chief Runner</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <span class="testimonial-badge">Volunteer 2025</span>
-                        <div class="testimonial-content">
-                            <div class="testimonial-stars">
-                                <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
-                            </div>
-                            <p class="testimonial-text">
-                                "Being a volunteer at the Ramadhan Charity Run was one of the most rewarding experiences. Seeing families come together for fitness and charity, and knowing we made a real difference - it's beautiful. Can't wait for the next edition!"
-                            </p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">
-                                    <img src="Herman.jpg" alt="CEO Herman Padel Centre" class="avatar-img">
-                                </div>
-                                <div class="author-info">
-                                    <h4>CEO Herman Padel Centre</h4>
-                                    <p>Event Volunteer</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <span class="testimonial-badge">Family Runner</span>
-                        <div class="testimonial-content">
-                            <div class="testimonial-stars">
-                                <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
-                            </div>
-                            <p class="testimonial-text">
-                                "I participated with my entire family, including my kids! The atmosphere was so welcoming and the cause is truly noble. My children learned the value of charity and fitness in the most fun way. Highly recommended!"
-                            </p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">
-                                    <img src="kasim.jpg" alt="Advocate Kasim Muwonge" class="avatar-img">
-                                </div>
-                                <div class="author-info">
-                                    <h4>Advocate Kasim Muwonge</h4>
-                                    <p>Family Participant</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="slider-nav next" onclick="nextTestimonial()">&#8250;</button>
-            
-            <div class="slider-dots">
-                <span class="dot active" onclick="goToSlide(0)"></span>
-                <span class="dot" onclick="goToSlide(1)"></span>
-                <span class="dot" onclick="goToSlide(2)"></span>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-organizers">
-                <p>Organized by <strong>Dusman's Daawa Initiative</strong></p>
-                <p>In Partnership with <strong>Allied Muslim Youth (AMYU)</strong></p>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; Ramadhan Charity Run. All rights reserved.</p>
-                <p>Charity, Fitness & Fun — A Happy Ramadhan for All 🕌</p>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
-
-
- 
-
