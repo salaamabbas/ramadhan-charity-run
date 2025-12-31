@@ -831,13 +831,13 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
         
-        .homepage-kit-description {
-            color: var(--gray);
-            margin-bottom: 2rem;
-            line-height: 1.7;
-            flex-grow: 1;
-        }
-        
+       .kit-description {
+    color: var(--text-medium); /* Changed from var(--gray) */
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    flex-grow: 1;
+    font-weight: 500; /* Added for better readability */
+}
         .homepage-view-more {
             text-align: center;
             margin-top: 3rem;
@@ -1415,11 +1415,12 @@
         }
         
         .kit-description {
-            color: var(--gray);
-            margin-bottom: 2rem;
-            line-height: 1.7;
-            flex-grow: 1;
-        }
+             color: var(--text-medium);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    flex-grow: 1;
+    font-weight: 500;
+}
         
         .purchase-btn {
             width: 100%;
@@ -3636,7 +3637,7 @@
                 <h1 class="hero-title">RAMADHAN CHARITY RUN</h1>
                 <p class="hero-date">
                     <i class="fas fa-calendar-alt"></i>
-                    February 14, 2026 • 6:00 AM
+                    February 15, 2026 • 6:00 AM
                 </p>
                 <p class="hero-edition">3RD EDITION</p>
                 <p class="hero-slogan">Charity, Fitness & Fun — A Happy Ramadhan for All</p>
@@ -4197,7 +4198,7 @@
                         
                         <div class="application-deadline">
                             <i class="fas fa-calendar-alt"></i>
-                            Application Deadline: March 15, 2024
+                            Application Deadline: Feb 2, 2026
                         </div>
                     </div>
                 </div>
@@ -4602,14 +4603,16 @@
         let autoSlideInterval;
         let heroImageIndex = 0;
         const heroImages = document.querySelectorAll('.hero-image');
-        const eventDate = new Date('February 14, 2026 06:00:00 GMT+0300').getTime();
+        
+        // UPDATED: February 15, 2026 at 6:00 AM Uganda Time (GMT+3)
+        const eventDate = new Date('February 15, 2026 06:00:00 GMT+0300').getTime();
 
         // ===== INITIALIZATION =====
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize hero image slider
             startHeroImageSlider();
             
-            // Initialize countdown
+            // Initialize countdown for February 15, 2026
             updateCountdown();
             setInterval(updateCountdown, 1000);
             
@@ -4643,8 +4646,8 @@
             if (distance < 0) {
                 document.getElementById('countdown').innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
-                        <div style="font-size: clamp(2rem, 3vw, 2.5rem); color: var(--yellow); font-weight: 800;">EVENT IS LIVE!</div>
-                        <div style="color: rgba(255, 255, 255, 0.9); margin-top: 10px; font-size: 1.1rem;">Thank you for participating</div>
+                        <div style="font-size: clamp(2rem, 3vw, 2.5rem); color: var(--yellow); font-weight: 800; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">EVENT IS LIVE!</div>
+                        <div style="color: var(--white); margin-top: 10px; font-size: 1.1rem; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.2);">Thank you for participating in Ramadhan Charity Run 2026</div>
                     </div>
                 `;
                 return;
@@ -4969,6 +4972,55 @@
                 // e.target.src = 'placeholder.jpg';
             }
         }, true);
-    </script>
+        
+        // ===== SCROLL TO TOP FUNCTION =====
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // ===== ADD SMOOTH SCROLL FOR ANCHOR LINKS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // ===== ADD LOADING STATE TO BUTTONS =====
+        function setLoading(button, isLoading) {
+            if (isLoading) {
+                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                button.disabled = true;
+            } else {
+                // Reset button text based on original content
+                if (button.classList.contains('purchase-btn')) {
+                    button.innerHTML = '<i class="fas fa-shopping-cart"></i> Purchase Now';
+                } else if (button.classList.contains('submit-btn')) {
+                    button.innerHTML = '<i class="fas fa-paper-plane"></i> ' + button.dataset.originalText;
+                }
+                button.disabled = false;
+            }
+        }
+        
+        // ===== ENHANCED FORM VALIDATION =====
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+        
+        function validatePhone(phone) {
+            const re = /^(\+?256|0)(7[0-9]{8}|3[0-9]{8})$/;
+            return re.test(String(phone).replace(/\s/g, ''));
+        }
+</script>
 </body>
 </html>
