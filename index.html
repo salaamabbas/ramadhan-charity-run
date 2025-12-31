@@ -760,7 +760,7 @@
         /* ===== KITS ON HOMEPAGE - ONLY 2 KITS ===== */
         .homepage-kits {
             padding: clamp(60px, 8vw, 100px) 0;
-            background: var(--gray-light);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--white) 100%);
             margin-top: 0;
         }
         
@@ -1445,291 +1445,1192 @@
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
         }
         
-        /* ===== DONATION PAGE WITH IMAGE ===== */
-        .donation-with-image {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: clamp(30px, 4vw, 50px);
-            align-items: center;
-            margin: 3rem auto;
-            max-width: 1000px;
-        }
-        
-        @media (max-width: 768px) {
-            .donation-with-image {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .donation-image-container {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-            height: 400px;
-        }
-        
-        .donation-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-        
-        .donation-image-container:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* ===== VOLUNTEER PAGE WITH IMAGE ===== */
-        .volunteer-with-image {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: clamp(30px, 4vw, 50px);
-            align-items: center;
-            margin: 3rem auto;
-            max-width: 1000px;
-        }
-        
-        @media (max-width: 768px) {
-            .volunteer-with-image {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .volunteer-image-container {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-            height: 400px;
-        }
-        
-        .volunteer-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-        
-        .volunteer-image-container:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* ===== PAYMENT OPTIONS ===== */
-        .payment-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: clamp(25px, 3vw, 35px);
-            margin: 3rem auto;
-            max-width: 800px;
-        }
-        
-        .payment-card {
-            background: linear-gradient(135deg, var(--light), var(--white));
-            padding: clamp(25px, 3vw, 35px);
-            border-radius: var(--radius-lg);
-            border-left: 5px solid var(--primary);
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-        }
-        
-        .payment-card:hover {
-            transform: translateY(-10px) translateX(10px);
-            box-shadow: var(--shadow-xl);
-            border-left-color: var(--yellow);
-        }
-        
-        .payment-card h3 {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        
-        .payment-info {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 0.8rem;
-            color: var(--black);
-        }
-        
-        .payment-info strong {
-            color: var(--primary);
-            font-weight: 700;
-        }
-        
-        .whatsapp-notice {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 2rem;
-            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
-            border-radius: var(--radius-lg);
-            border-left: 5px solid var(--success);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .whatsapp-notice h4 {
-            color: var(--success-dark);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .whatsapp-notice p {
-            color: #2E7D32;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-        
-        .whatsapp-notice a {
-            color: var(--success-dark);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .whatsapp-notice a:hover {
-            text-decoration: underline;
-        }
-        
-        /* ===== VOLUNTEER SECTION ===== */
-        .volunteer-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--gray);
-        }
-        
-        .volunteer-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: clamp(30px, 4vw, 50px);
-            margin-bottom: 4rem;
-        }
-        
-        @media (max-width: 768px) {
-            .volunteer-options {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .volunteer-card {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--white);
-            border-radius: var(--radius-lg);
-            padding: clamp(30px, 4vw, 50px);
-            box-shadow: var(--shadow-xl);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .volunteer-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(249, 202, 37, 0.1) 0%, transparent 70%);
-            transition: transform 0.8s;
-            pointer-events: none;
-        }
-        
-        .volunteer-card:hover::before {
-            transform: rotate(180deg);
-        }
-        
-        .volunteer-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 30px 80px rgba(29, 79, 162, 0.4);
-        }
-        
-        .volunteer-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--yellow);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin: 0 auto 2rem;
-            box-shadow: 0 10px 30px rgba(249, 202, 37, 0.4);
-        }
-        
-        .volunteer-card h3 {
-            font-size: clamp(1.8rem, 2.5vw, 2.5rem);
-            color: var(--yellow);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            text-align: center;
-        }
-        
-        .volunteer-card p {
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            text-align: center;
-            font-size: 1.05rem;
-        }
-        
-        .volunteer-benefits {
-            list-style: none;
-            margin-bottom: 2.5rem;
-        }
-        
-        .volunteer-benefits li {
-            padding: 0.8rem 0;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.05rem;
-        }
-        
-        .volunteer-benefits li::before {
-            content: '✓';
-            color: var(--yellow);
-            font-weight: 900;
-            font-size: 1.3rem;
-        }
-        
-        .apply-btn {
-            width: 100%;
-            padding: 1.2rem;
-            background: var(--yellow);
-            color: var(--primary);
-            border: none;
-            border-radius: var(--radius-xl);
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 5px 20px rgba(249, 202, 37, 0.4);
-            position: relative;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .apply-btn:hover {
-            background: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
-        }
+       /* ===== IMPROVED DONATE PAGE ===== */
+.donation-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.impact-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--yellow);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 0.3rem;
+}
+
+.donation-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+@media (max-width: 992px) {
+    .donation-main {
+        grid-template-columns: 1fr;
+    }
+}
+
+.donation-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.donation-benefits {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid var(--yellow);
+}
+
+.donation-benefits h3 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.3rem;
+}
+
+.donation-benefits ul {
+    list-style: none;
+}
+
+.donation-benefits li {
+    padding: 0.8rem 0;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--light);
+}
+
+.donation-benefits li:last-child {
+    border-bottom: none;
+}
+
+.donation-benefits li i {
+    color: var(--success);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.payment-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.payment-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 2px solid var(--light);
+    transition: var(--transition);
+}
+
+.payment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.payment-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.payment-header i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.payment-header h3 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.payment-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.payment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--light);
+}
+
+.payment-item:last-child {
+    border-bottom: none;
+}
+
+.payment-label {
+    color: var(--gray);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.payment-value {
+    color: var(--primary);
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 1.1rem;
+    background: var(--light);
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-sm);
+}
+
+.donation-image-container {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    height: 500px;
+}
+
+.donation-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.donation-image-container:hover img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(29, 79, 162, 0.9), transparent);
+    padding: 2.5rem;
+    color: var(--white);
+}
+
+.image-overlay h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--yellow);
+}
+
+.image-overlay p {
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+.whatsapp-notice {
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    border-left: 5px solid var(--success);
+    margin-top: 1rem;
+}
+
+.notice-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.notice-header i {
+    font-size: 2.5rem;
+    color: var(--success-dark);
+}
+
+.notice-header h4 {
+    color: var(--success-dark);
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.whatsapp-notice p {
+    color: #2E7D32;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.whatsapp-notice a {
+    color: var(--success-dark);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.whatsapp-notice a:hover {
+    text-decoration: underline;
+}
+
+.notice-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.notice-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #2E7D32;
+    font-weight: 500;
+}
+
+.notice-item i {
+    color: var(--success-dark);
+    font-size: 1.2rem;
+}
+
+.donation-quote {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2.5rem;
+    background: rgba(29, 79, 162, 0.05);
+    border-radius: var(--radius-lg);
+    position: relative;
+}
+
+.donation-quote i.fa-quote-left {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    font-size: 2rem;
+    color: var(--primary);
+    opacity: 0.3;
+}
+
+.donation-quote p {
+    color: var(--gray);
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+}
+
+.quote-source {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1rem;
+}
+     /* ===== VOLUNTEER PAGE WITH IMAGE ===== */
+.volunteer-with-image {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: clamp(30px, 4vw, 60px);
+    align-items: start;
+    margin: 3rem auto;
+    max-width: 1200px;
+}
+
+@media (max-width: 992px) {
+    .volunteer-with-image {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* Image Container */
+.volunteer-image-container {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    height: 500px;
+}
+
+.volunteer-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.volunteer-image-container:hover .volunteer-img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 2rem;
+    color: white;
+}
+
+.overlay-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.overlay-content p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Volunteer Content */
+.volunteer-intro {
+    margin-bottom: 2.5rem;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+}
+
+.volunteer-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+}
+
+.stat-item {
+    padding: 1rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+/* Volunteer Card */
+.volunteer-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--light);
+    transition: var(--transition);
+}
+
+.volunteer-card:hover {
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-light);
+    transform: translateY(-5px);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.volunteer-icon {
+    font-size: 2.5rem;
+}
+
+.card-header h3 {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin: 0;
+}
+
+.badge {
+    background: var(--yellow);
+    color: var(--dark);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.card-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--light);
+}
+
+/* Volunteer Details */
+.volunteer-details {
+    margin-bottom: 2rem;
+}
+
+.volunteer-details h4 {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.role-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.role-tag {
+    background: var(--light);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary);
+    border: 1px solid var(--primary-light);
+}
+
+.volunteer-benefits {
+    list-style: none;
+    padding: 0;
+}
+
+.volunteer-benefits li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+}
+
+.volunteer-benefits li:last-child {
+    border-bottom: none;
+}
+
+.volunteer-benefits i {
+    color: var(--primary);
+    width: 20px;
+    text-align: center;
+}
+
+.volunteer-requirements {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    margin: 2rem 0;
+}
+
+.volunteer-requirements h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.volunteer-requirements ul {
+    list-style: none;
+    padding: 0;
+}
+
+.volunteer-requirements li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.volunteer-requirements li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-weight: bold;
+}
+
+/* Apply Button */
+.apply-btn {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    margin: 1.5rem 0;
+}
+
+.apply-btn:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-subtext {
+    font-size: 0.9rem;
+    font-weight: normal;
+    opacity: 0.9;
+}
+
+.application-deadline {
+    text-align: center;
+    color: var(--warning);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+/* Additional Opportunities */
+.additional-opportunities {
+    margin: 4rem auto;
+    max-width: 1200px;
+}
+
+.opportunities-title {
+    text-align: center;
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.opportunity-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    border: 1px solid var(--light);
+}
+
+.opportunity-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
+}
+
+.opportunity-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.opportunity-card h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.opportunity-card p {
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Volunteer Notice */
+.volunteer-notice {
+    background: linear-gradient(135deg, var(--light), var(--white));
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    margin: 3rem auto;
+    max-width: 1000px;
+    border-left: 5px solid var(--primary);
+}
+
+.notice-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.notice-header i {
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.notice-header h4 {
+    color: var(--primary);
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.notice-content p {
+    line-height: 1.8;
+    color: var(--dark-gray);
+    margin-bottom: 1.5rem;
+}
+
+.contact-info {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.contact-info i {
+    color: var(--primary);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .volunteer-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .volunteer-card {
+        padding: 1.5rem;
+    }
+    
+    .card-header {
+        flex-wrap: wrap;
+    }
+    
+    .badge {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .opportunities-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animation-delay-1 {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.animation-delay-2 {
+    animation: fadeInUp 0.6s ease 0.2s forwards;
+    opacity: 0;
+}
+     /* ===== VOLUNTEER PAGE WITH IMAGE ===== */
+.volunteer-with-image {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: clamp(30px, 4vw, 60px);
+    align-items: start;
+    margin: 3rem auto;
+    max-width: 1200px;
+}
+
+@media (max-width: 992px) {
+    .volunteer-with-image {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* Image Container */
+.volunteer-image-container {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    height: 500px;
+}
+
+.volunteer-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.volunteer-image-container:hover .volunteer-img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 2rem;
+    color: white;
+}
+
+.overlay-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.overlay-content p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Volunteer Content */
+.volunteer-intro {
+    margin-bottom: 2.5rem;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+}
+
+.volunteer-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+}
+
+.stat-item {
+    padding: 1rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+/* Volunteer Card */
+.volunteer-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--light);
+    transition: var(--transition);
+}
+
+.volunteer-card:hover {
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-light);
+    transform: translateY(-5px);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.volunteer-icon {
+    font-size: 2.5rem;
+}
+
+.card-header h3 {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin: 0;
+}
+
+.badge {
+    background: var(--yellow);
+    color: var(--dark);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.card-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--light);
+}
+
+/* Volunteer Details */
+.volunteer-details {
+    margin-bottom: 2rem;
+}
+
+.volunteer-details h4 {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.role-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.role-tag {
+    background: var(--light);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary);
+    border: 1px solid var(--primary-light);
+}
+
+.volunteer-benefits {
+    list-style: none;
+    padding: 0;
+}
+
+.volunteer-benefits li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+}
+
+.volunteer-benefits li:last-child {
+    border-bottom: none;
+}
+
+.volunteer-benefits i {
+    color: var(--primary);
+    width: 20px;
+    text-align: center;
+}
+
+.volunteer-requirements {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    margin: 2rem 0;
+}
+
+.volunteer-requirements h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.volunteer-requirements ul {
+    list-style: none;
+    padding: 0;
+}
+
+.volunteer-requirements li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.volunteer-requirements li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-weight: bold;
+}
+
+/* Apply Button */
+.apply-btn {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    margin: 1.5rem 0;
+}
+
+.apply-btn:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-subtext {
+    font-size: 0.9rem;
+    font-weight: normal;
+    opacity: 0.9;
+}
+
+.application-deadline {
+    text-align: center;
+    color: var(--warning);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+/* Additional Opportunities */
+.additional-opportunities {
+    margin: 4rem auto;
+    max-width: 1200px;
+}
+
+.opportunities-title {
+    text-align: center;
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.opportunity-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    border: 1px solid var(--light);
+}
+
+.opportunity-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
+}
+
+.opportunity-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.opportunity-card h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.opportunity-card p {
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Volunteer Notice */
+.volunteer-notice {
+    background: linear-gradient(135deg, var(--light), var(--white));
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    margin: 3rem auto;
+    max-width: 1000px;
+    border-left: 5px solid var(--primary);
+}
+
+.notice-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.notice-header i {
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.notice-header h4 {
+    color: var(--primary);
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.notice-content p {
+    line-height: 1.8;
+    color: var(--dark-gray);
+    margin-bottom: 1.5rem;
+}
+
+.contact-info {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.contact-info i {
+    color: var(--primary);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .volunteer-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .volunteer-card {
+        padding: 1.5rem;
+    }
+    
+    .card-header {
+        flex-wrap: wrap;
+    }
+    
+    .badge {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .opportunities-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animation-delay-1 {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.animation-delay-2 {
+    animation: fadeInUp 0.6s ease 0.2s forwards;
+    opacity: 0;
+}
         
         /* ===== PARTNERS SECTION ===== */
         .partners-intro {
@@ -2773,38 +3674,38 @@
         </div>
     </section>
 
-    <!-- Kits on Homepage - ONLY 2 KITS -->
-    <section id="homepage-kits" class="homepage-kits">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Choose Your Kit</h2>
-                <p class="section-subtitle">Start with our most popular kits. View all options for the complete charity run experience.</p>
+  <!-- Kits on Homepage - ONLY 2 KITS -->
+<section id="homepage-kits" class="homepage-kits">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Choose Your Kit</h2>
+            <p class="section-subtitle">Start with our most popular kits. View all options for the complete charity run experience.</p>
+        </div>
+        <div class="homepage-kits-grid">
+            <div class="homepage-kit-card animation-delay-1">
+                <h3>🥇 Gold Kit</h3>
+                <div class="homepage-kit-price">UGX 49,000</div>
+                <p class="homepage-kit-description">Premium package with vest, medal, water bottle, cap, and drawstring bag.</p>
+                <button class="purchase-btn" onclick="openPaymentModal('Gold Kit - UGX 49,000')">
+                    <i class="fas fa-shopping-cart"></i> Purchase Now
+                </button>
             </div>
-            <div class="homepage-kits-grid">
-                <div class="homepage-kit-card animation-delay-1">
-                    <h3>🥇 Gold Kit</h3>
-                    <div class="homepage-kit-price">UGX 49,000</div>
-                    <p class="homepage-kit-description">Premium package with vest, medal, water bottle, cap, and drawstring bag.</p>
-                    <button class="purchase-btn" onclick="openPaymentModal('Gold Kit - UGX 49,000')">
-                        <i class="fas fa-shopping-cart"></i> Purchase Now
-                    </button>
-                </div>
-                <div class="homepage-kit-card animation-delay-2">
-                    <h3>💎 Platinum Kit</h3>
-                    <div class="homepage-kit-price">UGX 89,000</div>
-                    <p class="homepage-kit-description">Ultimate experience with T-shirt, medal, bottle, cap, bag, and framed certificate.</p>
-                    <button class="purchase-btn" onclick="openPaymentModal('Platinum Kit - UGX 89,000')">
-                        <i class="fas fa-shopping-cart"></i> Purchase Now
-                    </button>
-                </div>
-            </div>
-            <div class="homepage-view-more">
-                <button class="cta-button secondary" onclick="showSection('kits')" style="min-width: 250px;">
-                    <i class="fas fa-eye"></i> View More Kits
+            <div class="homepage-kit-card animation-delay-2">
+                <h3>💎 Platinum Kit</h3>
+                <div class="homepage-kit-price">UGX 89,000</div>
+                <p class="homepage-kit-description">Ultimate experience with T-shirt, medal, bottle, cap, bag, and framed certificate.</p>
+                <button class="purchase-btn" onclick="openPaymentModal('Platinum Kit - UGX 89,000')">
+                    <i class="fas fa-shopping-cart"></i> Purchase Now
                 </button>
             </div>
         </div>
-    </section>
+        <div class="homepage-view-more">
+            <button class="cta-button" onclick="showSection('kits')">
+                <i class="fas fa-eye"></i> View More Kits
+            </button>
+        </div>
+    </div>
+</section>
 
     <!-- Gallery Showcase - ONLY 2 IMAGES -->
     <section id="home-gallery" class="gallery-showcase">
@@ -2920,67 +3821,85 @@
         </div>
     </section>
 
-    <!-- Partners Marquee on Homepage -->
-    <section id="homepage-partners" class="homepage-partners">
-        <div class="container">
-            <h2>Our Amazing Partners</h2>
-            <p>Together, we make a greater impact in our community</p>
-            
-            <div class="homepage-marquee">
-                <div class="homepage-marquee-track" id="homepageMarqueeTrack">
-                    <div class="homepage-partner-item">
-                        <img src="run-logo.png" alt="Dusman's Daawa">
-                    </div>
-                    <div class="homepage-partner-item">
-                        <img src="amyu-logo.png" alt="AMYU">
-                    </div>
-                    <div class="homepage-partner-item">
-                        <img src="Taniim.png" alt="Taniim Hijja and Umrah">
-                    </div>
-                    <div class="homepage-partner-item">
-                        <img src="run-logo.png" alt="Community Outreach">
-                    </div>
-                    <div class="homepage-partner-item">
-                        <img src="amyu-logo.png" alt="Health Hub">
-                    </div>
-                    <div class="homepage-partner-item">
-                        <img src="run-logo.png" alt="Sports Federation">
-                    </div>
-                    <div class="homepage-partner-item">
-                        <img src="amyu-logo.png" alt="Media Partners">
-                    </div>
-                    <!-- Duplicate for seamless loop -->
-                    <div class="homepage-partner-item">
-                        <img src="run-logo.png" alt="Dusman's Daawa">
-                    </div>
-                    <div class="homepage-partner-item">
-                        <img src="amyu-logo.png" alt="AMYU">
-                    </div>
-                    <div class="homepage-partner-item">
-                        <img src="Taniim.png" alt="Taniim Hijja and Umrah">
-                    </div>
-                    <div class="homepage-partner-item">
-                        <img src="run-logo.png" alt="Community Outreach">
-                    </div>
-                    <div class="homepage-partner-item">
-                        <img src="amyu-logo.png" alt="Health Hub">
-                    </div>
-                    <div class="homepage-partner-item">
-                        <img src="run-logo.png" alt="Sports Federation">
-                    </div>
-                    <div class="homepage-partner-item">
-                        <img src="amyu-logo.png" alt="Media Partners">
-                    </div>
+<!-- Partners Marquee on Homepage -->
+<section id="homepage-partners" class="homepage-partners">
+    <div class="container">
+        <h2>Our Amazing Partners</h2>
+        <p>Together, we make a greater impact in our community</p>
+        
+        <div class="homepage-marquee">
+            <div class="homepage-marquee-track" id="homepageMarqueeTrack">
+                <div class="homepage-partner-item">
+                    <img src="run-logo.png" alt="Dusman's Daawa">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="amyu-logo.png" alt="AMYU">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="Taniim.png" alt="Taniim Hijja and Umrah">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="salaam safaris logo.png" alt="Salaam safaris">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="saham_logo.png" alt="Saham quran academy">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="run-logo.png" alt="Dusman's Daawa">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="amyu-logo.png" alt="AMYU">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="Taniim.png" alt="Taniim Hijja and Umrah">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="salaam safaris logo.png" alt="Salaam safaris">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="saham_logo.png" alt="Saham quran academy">
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="homepage-partner-item">
+                    <img src="run-logo.png" alt="Dusman's Daawa">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="amyu-logo.png" alt="AMYU">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="Taniim.png" alt="Taniim Hijja and Umrah">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="salaam safaris logo.png" alt="Salaam safaris">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="saham_logo.png" alt="Saham quran academy">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="run-logo.png" alt="Dusman's Daawa">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="amyu-logo.png" alt="AMYU">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="Taniim.png" alt="Taniim Hijja and Umrah">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="salaam safaris logo.png" alt="Salaam safaris">
+                </div>
+                <div class="homepage-partner-item">
+                    <img src="saham_logo.png" alt="Saham quran academy">
                 </div>
             </div>
-            
-            <div class="homepage-cta">
-                <button class="cta-button" onclick="showSection('partners')">
-                    <i class="fas fa-handshake"></i> View All Partners
-                </button>
-            </div>
         </div>
-    </section>
+        
+        <div class="homepage-cta">
+            <button class="cta-button" onclick="showSection('partners')">
+                <i class="fas fa-handshake"></i> View All Partners
+            </button>
+        </div>
+    </div>
+</section>
 
     <!-- Kits Section (Full Page with All Kits) -->
     <section id="kits" class="content-section page-section light">
@@ -3060,159 +3979,327 @@
         </div>
     </section>
 
-    <!-- Donate Section with Image -->
-    <section id="donate" class="content-section page-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Make a Donation</h2>
-                <p class="section-subtitle">Your generosity helps us feed 1,000 families this Ramadhan. Every contribution makes a difference!</p>
+ <!-- Donate Section - Better Organized -->
+<section id="donate" class="content-section page-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Make a Donation</h2>
+            <p class="section-subtitle">Your generosity helps us feed 1,000 families this Ramadhan. Every contribution makes a difference!</p>
+        </div>
+        
+        <div class="donation-content">
+            <!-- Impact Statistics -->
+            <div class="impact-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">👨‍👩‍👧‍👦</div>
+                    <div class="stat-content">
+                        <div class="stat-number">1,000+</div>
+                        <div class="stat-label">Families to Support</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🕌</div>
+                    <div class="stat-content">
+                        <div class="stat-number">3rd</div>
+                        <div class="stat-label">Edition This Year</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🤝</div>
+                    <div class="stat-content">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Direct to Charity</div>
+                    </div>
+                </div>
             </div>
             
-            <div class="donation-with-image">
-                <div>
-                    <div class="payment-options">
-                        <div class="payment-card animation-delay-1">
-                            <h3><i class="fas fa-mobile-alt"></i> MTN Mobile Money</h3>
-                            <p class="payment-info">Send to: <strong>0762301744</strong></p>
-                            <p class="payment-info">Account Name: <strong>Uthman Matovu</strong></p>
-                            <p class="payment-info">Reference: <strong>RCR Donation</strong></p>
-                        </div>
-                        <div class="payment-card animation-delay-2">
-                            <h3><i class="fas fa-sim-card"></i> Airtel Money</h3>
-                            <p class="payment-info">Send to: <strong>0709113129</strong></p>
-                            <p class="payment-info">Account Name: <strong>Uthman Matovu</strong></p>
-                            <p class="payment-info">Reference: <strong>RCR Donation</strong></p>
-                        </div>
+            <!-- Payment Options with Image -->
+            <div class="donation-main">
+                <div class="donation-info">
+                    <div class="donation-benefits">
+                        <h3><i class="fas fa-hand-holding-heart"></i> How Your Donation Helps</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Provides food packages for needy families during ramadhan</li>
+                            
+                        </ul>
                     </div>
                     
-                    <div class="whatsapp-notice">
-                        <h4><i class="fab fa-whatsapp"></i> Payment Confirmation</h4>
-                        <p>After making your donation, please share the payment proof via <a href="https://wa.me/256762301744?text=Asalaam%20alykum.%20I%20have%20made%20a%20donation%20to%20Ramadhan%20Charity%20Run" target="_blank">WhatsApp: 0762301744</a> so we can acknowledge your contribution and send you a receipt.</p>
-                        <p>Your donation receipt will be sent within 24 hours of confirmation.</p>
+                    <div class="payment-options">
+                        <div class="payment-card">
+                            <div class="payment-header">
+                                <i class="fas fa-mobile-alt"></i>
+                                <h3>MTN Mobile Money</h3>
+                            </div>
+                            <div class="payment-details">
+                                <div class="payment-item">
+                                    <span class="payment-label">Send to:</span>
+                                    <span class="payment-value">0762301744</span>
+                                </div>
+                                <div class="payment-item">
+                                    <span class="payment-label">Account Name:</span>
+                                    <span class="payment-value">Uthman Matovu</span>
+                                </div>
+                                <div class="payment-item">
+                                    <span class="payment-label">Reference:</span>
+                                    <span class="payment-value">RCR Donation</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-card">
+                            <div class="payment-header">
+                                <i class="fas fa-sim-card"></i>
+                                <h3>Airtel Money</h3>
+                            </div>
+                            <div class="payment-details">
+                                <div class="payment-item">
+                                    <span class="payment-label">Send to:</span>
+                                    <span class="payment-value">0709113129</span>
+                                </div>
+                                <div class="payment-item">
+                                    <span class="payment-label">Account Name:</span>
+                                    <span class="payment-value">Uthman Matovu</span>
+                                </div>
+                                <div class="payment-item">
+                                    <span class="payment-label">Reference:</span>
+                                    <span class="payment-value">RCR Donation</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="donation-image-container animation-delay-3">
+                <div class="donation-image-container">
                     <img src="donation.jpg" alt="Making a Difference Through Donation">
+                    <div class="image-overlay">
+                        <h4>Every Contribution Matters</h4>
+                        <p>Your donation brings hope and happiness to families</p>
+                    </div>
                 </div>
             </div>
             
-            <div class="text-center mt-3">
-                <p style="color: var(--gray); font-style: italic; max-width: 700px; margin: 0 auto;">"Whoever relieves a believer's distress of the distressful aspects of this world, Allah will rescue him from a difficulty of the difficulties of the Hereafter." (Sahih Muslim)</p>
+            <!-- WhatsApp Notice -->
+            <div class="whatsapp-notice">
+                <div class="notice-header">
+                    <i class="fab fa-whatsapp"></i>
+                    <h4>Payment Confirmation</h4>
+                </div>
+                <p>After making your donation, please share the payment proof via <a href="https://wa.me/256762301744?text=Asalaam%20alykum.%20I%20have%20made%20a%20donation%20to%20Ramadhan%20Charity%20Run" target="_blank">WhatsApp: 0762301744</a> so we can acknowledge your contribution and send you a receipt.</p>
+                <div class="notice-details">
+                    <div class="notice-item">
+                   
+                    <div class="notice-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure and transparent process</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+        
+        <!-- Quote Section -->
+        <div class="donation-quote">
+            <i class="fas fa-quote-left"></i>
+            <p>"Whoever relieves a believer's distress of the distressful aspects of this world, Allah will rescue him from a difficulty of the difficulties of the Hereafter."</p>
+            <span class="quote-source">- Sahih Muslim</span>
+        </div>
+    </div>
+</section>
 
-    <!-- Volunteer Section with Image -->
-    <section id="volunteer" class="content-section page-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Join Our Volunteer Team</h2>
-                <p class="section-subtitle">Be part of something meaningful this Ramadhan. Your time and effort can make a real difference!</p>
+  <!-- Volunteer Section with Image -->
+<section id="volunteer" class="content-section page-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Join Our Volunteer Team</h2>
+            <p class="section-subtitle">Be part of something meaningful this Ramadhan. Your time and effort can make a real difference!</p>
+        </div>
+        
+        <div class="volunteer-with-image">
+            <!-- Left Column: Image -->
+            <div class="volunteer-image-container animation-delay-1">
+                <img src="volunteer2.jpg" alt="Volunteers Making a Difference" class="volunteer-img">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3>Make an Impact</h3>
+                        <p>Join 200+ volunteers making a difference</p>
+                    </div>
+                </div>
             </div>
             
-            <div class="volunteer-with-image">
-                <div class="volunteer-image-container animation-delay-1">
-                    <img src="volunteer2.jpg" alt="Volunteers Making a Difference">
+            <!-- Right Column: Content -->
+            <div class="volunteer-content">
+                <div class="volunteer-intro">
+                    <p class="intro-text">We're looking for passionate individuals who want to contribute to a noble cause. Whether you can help during the event or partner with us long-term, we welcome all who share our commitment to community service and making a positive impact.</p>
+                    
+                    <div class="volunteer-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">Volunteers Needed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Roles Available</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Training Provided</div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div>
-                    <div class="volunteer-intro">
-                        <p>We're looking for passionate individuals who want to contribute to a noble cause. Whether you can help during the event or partner with us long-term, we welcome all who share our commitment to community service and making a positive impact.</p>
-                    </div>
-                    
-                    <div class="volunteer-options">
-                        <div class="volunteer-card animation-delay-2">
+                <div class="volunteer-options">
+                    <div class="volunteer-card animation-delay-2">
+                        <div class="card-header">
                             <div class="volunteer-icon">🤝</div>
                             <h3>Event Volunteer</h3>
-                            <p>Help us make the 3rd Ramadhan Charity Run a resounding success! We need dedicated volunteers for various roles during the event day.</p>
+                            <span class="badge">Most Popular</span>
+                        </div>
+                        
+                        <p class="card-description">Help us make the 3rd Ramadhan Charity Run a resounding success! We need dedicated volunteers for various roles during the event day.</p>
+                        
+                        <div class="volunteer-details">
+                            <h4>Roles Available:</h4>
+                            <div class="role-tags">
+                                <span class="role-tag">Registration Desk</span>
+                                <span class="role-tag">Route Marshals</span>
+                                <span class="role-tag">Water Stations</span>
+                                <span class="role-tag">First Aid Support</span>
+                                <span class="role-tag">Crowd Management</span>
+                                <span class="role-tag">Logistics Team</span>
+                            </div>
+                        </div>
+                        
+                        <div class="volunteer-details">
+                            <h4>Volunteer Benefits:</h4>
                             <ul class="volunteer-benefits">
-                                <li>Official volunteer t-shirt and kit</li>
-                                <li>Certificate of participation and appreciation</li>
-                                <li>Refreshments and meals during the event</li>
-                                <li>Community service hours certification</li>
-                                <li>Networking opportunities with like-minded individuals</li>
-                                <li>Pre-event training and orientation</li>
+                                <li><i class="fas fa-tshirt"></i> Official volunteer t-shirt and kit</li>
+                                <li><i class="fas fa-certificate"></i> Certificate of participation</li>
+                                <li><i class="fas fa-utensils"></i> Refreshments and meals</li>
+                                <li><i class="fas fa-clock"></i> Community service hours</li>
+                                <li><i class="fas fa-users"></i> Networking opportunities</li>
+                                <li><i class="fas fa-graduation-cap"></i> Pre-event training</li>
                             </ul>
-                            <button class="apply-btn" onclick="openVolunteerForm()">
-                                <i class="fas fa-user-plus"></i> Apply to Volunteer
-                            </button>
+                        </div>
+                        
+                        <div class="volunteer-requirements">
+                            <h4>Requirements:</h4>
+                            <ul>
+                                <li>Minimum age: 16 years</li>
+                                <li>Availability on event day</li>
+                                <li>Attend pre-event training</li>
+                                <li>Commitment to full shift</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="apply-btn" onclick="openVolunteerForm()">
+                            <i class="fas fa-user-plus"></i> Apply Now
+                            <span class="btn-subtext">Limited positions available</span>
+                        </button>
+                        
+                        <div class="application-deadline">
+                            <i class="fas fa-calendar-alt"></i>
+                            Application Deadline: March 15, 2024
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="text-center mt-3">
-                <p style="color: var(--gray); max-width: 700px; margin: 0 auto; line-height: 1.8;">
-                    <i class="fas fa-info-circle" style="color: var(--primary);"></i> 
-                    <strong>Note:</strong> All volunteers will undergo a brief training session before the event. 
-                    Volunteers must be at least 16 years old. For groups or organizations wanting to volunteer together, 
-                    please contact us directly for special arrangements.
-                </p>
-            </div>
         </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section id="partners" class="content-section page-section light">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Partners & Sponsors</h2>
-                <p class="section-subtitle">We are grateful for the support of organizations and individuals who share our vision of creating a positive impact in our community.</p>
-            </div>
-            
-            <div class="partners-intro">
-                <p>Our partners play a crucial role in making the Ramadhan Charity Run a success. Their support enables us to reach more families, organize better events, and create lasting change in our community.</p>
-            </div>
-            
-            <div class="partners-marquee">
-                <div class="marquee-track" id="marqueeTrack">
-                    <div class="partner-logo-item">
-                        <img src="run-logo.png" alt="Dusman's Daawa">
-                    </div>
-                    <div class="partner-logo-item">
-                        <img src="amyu-logo.png" alt="Allied Muslim Youth Uganda">
-                    </div>
-                    <div class="partner-logo-item">
-                        <img src="Taniim.png" alt="Taniim Hijja and Umrah">
-                    </div>
-                    <div class="partner-logo-item">
-                        <img src="run-logo.png" alt="Community Supporters">
-                    </div>
-                    <div class="partner-logo-item">
-                        <img src="amyu-logo.png" alt="Youth Organizations">
-                    </div>
-                    <!-- Duplicate for seamless loop -->
-                    <div class="partner-logo-item">
-                        <img src="run-logo.png" alt="Dusman's Daawa">
-                    </div>
-                    <div class="partner-logo-item">
-                        <img src="amyu-logo.png" alt="Allied Muslim Youth Uganda">
-                    </div>
-                    <div class="partner-logo-item">
-                        <img src="Taniim.png" alt="Taniim Hijja and Umrah">
-                    </div>
-                    <div class="partner-logo-item">
-                        <img src="run-logo.png" alt="Community Supporters">
-                    </div>
-                    <div class="partner-logo-item">
-                        <img src="amyu-logo.png" alt="Youth Organizations">
-                    </div>
+        
+        <!-- Additional Volunteer Opportunities -->
+        <div class="additional-opportunities">
+            <h3 class="opportunities-title">Other Ways to Get Involved</h3>
+            <div class="opportunities-grid">
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">🏢</div>
+                    <h4>Corporate Partners</h4>
+                    <p>Engage your company's CSR program. Group volunteering opportunities available.</p>
                 </div>
-            </div>
-            
-            <div class="become-partner-container">
-                <div class="become-partner-card">
-                    <h3>Become a Partner</h3>
-                    <p>Join us in making a difference! Whether through sponsorship, in-kind donations, or collaboration, your organization can help us reach more families and create lasting impact.</p>
-                    <button class="partner-btn" onclick="openPartnerForm()">
-                        <i class="fas fa-handshake"></i> Partner With Us
-                    </button>
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">🎓</div>
+                    <h4>Student Groups</h4>
+                    <p>Perfect for school clubs, university societies, and youth organizations.</p>
+                </div>
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">🤲</div>
+                    <h4>Year-Round Volunteers</h4>
+                    <p>Join our ongoing community initiatives beyond Ramadhan.</p>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <!-- Important Information -->
+        <div class="volunteer-notice">
+            <div class="notice-header">
+                <i class="fas fa-info-circle"></i>
+                <h4>Important Information for Volunteers</h4>
+            </div>
+            <div class="notice-content">
+                <p><strong>Note:</strong> All volunteers will undergo a mandatory training session before the event. Volunteers must be at least 16 years old. For groups or organizations wanting to volunteer together, please contact us directly for special arrangements.</p>
+                
+            
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- Partners Section -->
+<section id="partners" class="content-section page-section light">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Our Partners & Sponsors</h2>
+            <p class="section-subtitle">We are grateful for the support of organizations and individuals who share our vision of creating a positive impact in our community.</p>
+        </div>
+        
+        <div class="partners-intro">
+            <p>Our partners play a crucial role in making the Ramadhan Charity Run a success. Their support enables us to reach more families, organize better events, and create lasting change in our community.</p>
+        </div>
+        
+        <div class="partners-marquee">
+            <div class="marquee-track" id="marqueeTrack">
+                <div class="partner-logo-item">
+                    <img src="run-logo.png" alt="Dusman's Daawa">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="amyu-logo.png" alt="Allied Muslim Youth Uganda">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="Taniim.png" alt="Taniim Hijja and Umrah">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="salaam safaris logo.png" alt="Salaam Safaris">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="saham_logo.png" alt="Saham Quran Academy">
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="partner-logo-item">
+                    <img src="run-logo.png" alt="Dusman's Daawa">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="amyu-logo.png" alt="Allied Muslim Youth Uganda">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="Taniim.png" alt="Taniim Hijja and Umrah">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="salaam safaris logo.png" alt="Salaam Safaris">
+                </div>
+                <div class="partner-logo-item">
+                    <img src="saham_logo.png" alt="Saham Quran Academy">
+                </div>
+            </div>
+        </div>
+        
+        <div class="become-partner-container">
+            <div class="become-partner-card">
+                <h3>Become a Partner</h3>
+                <p>Join us in making a difference! Whether through sponsorship, in-kind donations, or collaboration, your organization can help us reach more families and create lasting impact.</p>
+                <button class="partner-btn" onclick="openPartnerForm()">
+                    <i class="fas fa-handshake"></i> Partner With Us
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
     <!-- Gallery Section - Visually Stunning Layout -->
     <section id="gallery" class="content-section page-section">
         <div class="container">
@@ -3223,36 +4310,32 @@
             
             <div class="full-gallery-grid">
                 <!-- All images from the website -->
+
+                   <div class="full-gallery-item">
+                    <img src="gallery1.jpg" alt="Chief Runner">
+                    <div class="full-gallery-overlay">
+                        <h3>Chief Runner</h3>
+                        <p>arrival of the chief runner</p>
+                    </div>
+                </div>
+
                 <div class="full-gallery-item animation-delay-1">
-                    <img src="running-for-hope.jpg" alt="Running for Hope">
+                    <img src="background3.jpg" alt="Running for Hope">
                     <div class="full-gallery-overlay">
                         <h3>Running for Hope</h3>
                         <p>Every step makes a difference</p>
                     </div>
                 </div>
-                <div class="full-gallery-item animation-delay-2">
-                    <img src="volunteers-in-action.jpg" alt="Volunteers in Action">
-                    <div class="full-gallery-overlay">
-                        <h3>Volunteers in Action</h3>
-                        <p>Making dreams come true</p>
-                    </div>
-                </div>
-                <div class="full-gallery-item animation-delay-3">
-                    <img src="volunteer2.jpg" alt="Happy Volunteers">
-                    <div class="full-gallery-overlay">
-                        <h3>Happy Volunteers</h3>
-                        <p>Spreading joy together</p>
-                    </div>
-                </div>
+             
                 <div class="full-gallery-item animation-delay-4">
-                    <img src="donation.jpg" alt="Donation Collection">
+                    <img src="volunteers-in-action.jpg" alt="Donation Collection">
                     <div class="full-gallery-overlay">
                         <h3>Donation Collection</h3>
                         <p>Giving with open hearts</p>
                     </div>
                 </div>
                 <div class="full-gallery-item animation-delay-5">
-                    <img src="background3.jpg" alt="Event Atmosphere">
+                    <img src="running-for-hope.jpg" alt="Event Atmosphere">
                     <div class="full-gallery-overlay">
                         <h3>Event Atmosphere</h3>
                         <p>Community coming together</p>
@@ -3265,21 +4348,16 @@
                         <p>Leading by example</p>
                     </div>
                 </div>
-                <div class="full-gallery-item">
-                    <img src="Herman.jpg" alt="Volunteer Leader">
+
+                <div class="full-gallery-item animation-delay-3">
+                    <img src="joy-and-fitness.jpg" alt="Happy runners">
                     <div class="full-gallery-overlay">
-                        <h3>Volunteer Leader</h3>
-                        <p>Guiding the team</p>
+                        <h3>Happy Volunteers</h3>
+                        <p>Spreading joy together</p>
                     </div>
                 </div>
-                <div class="full-gallery-item">
-                    <img src="kasim.jpg" alt="Family Participant">
-                    <div class="full-gallery-overlay">
-                        <h3>Family Participant</h3>
-                        <p>All ages welcome</p>
-                    </div>
-                </div>
-            </div>
+              
+            
             
             <div class="text-center mt-3">
                 <p style="color: var(--gray); font-style: italic; max-width: 700px; margin: 0 auto;">
